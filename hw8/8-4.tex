@@ -1,0 +1,41 @@
+\documentclass{exam}
+\title{MAT257 PSET 8---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Comment}[1]{\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\text{#1}}
+\begin{document}
+    \sffamily
+    \maketitle
+    As $g_1, g_2$ are both $C^1$ functions,
+    \begin{align*}
+        D_1f(x,y)&=g_1(x,0)+D_1\int_0^yg_2(x,t)\dd t\Comment{  by FTC on }g_1\\
+        &=g_1(x,0)+\int_0^yD_1g_2(x,t)\dd t\Comment{  by Leibnitz' rule}\\
+        &=g_1(x,0)+\int_0^yD_2g_1(x,t)\dd t\Comment{  because } D_1g_2=D_2g_1\\
+        &=g_1(x,0)+g_1(x,y)-g_1(x,0)\Comment{by FTC on }g_2\\
+        &=g_1(x,y)
+    \end{align*}
+
+    As $\int_0^xg_1(t,0)\dd t$ is independent of the second variable $y$, by fundamental theorem of calculus,
+    \begin{align*}
+        D_2f(x,y)=D_2\int_0^yg_2(x,t)\dd t=g_2(x,y)
+    \end{align*}
+
+\end{document}

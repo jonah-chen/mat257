@@ -1,0 +1,35 @@
+\documentclass{exam}
+\title{MAT257 PSET 14---Question 1}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    We know that if \(f:\R^n\to\R\) is a 0-form, \(\dd f=\sum_i\frac{\partial f}{\partial x^i}\dd x_i\). Since \(f,g,fg\) are 0-forms,
+    \begin{align*}
+        \dd(fg)&=\sum_i\frac{\partial(fg)}{\partial x^i} \dd x_i\\
+        &=\sum_i\frac{\partial f}{\partial x^i}g+f\frac{\partial g}{\partial x^i} \dd x_i\\
+        &=g\sum_i\frac{\partial f}{\partial x^i} \dd x_i+f\sum_i\frac{\partial g}{\partial x^i} \dd x_i\\
+        &=f\dd g + g\dd f
+    \end{align*}
+\end{document}

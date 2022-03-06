@@ -1,0 +1,32 @@
+\documentclass{exam}
+\title{MAT257 PSET 4---Question 6}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    Consider $h_x(t)=f(tx)$. Since $f$ is differentiable, taking the derivative of $h_x$ is the same as taking the partial derivative of $f$ with respect to $t$, as $x$ in $h_x$ is constant. Using chain rule for $f$,
+    $h_x'(t)=\partial_tf(tx)=f'(tx)\cdot x$. 
+    
+    Next, note that by one variable fundamental theorem of calculus $\int_{0}^1h_x'(t)\dd t=h(1)-h(0)=f(x)-f(0)=f(x)$ as $f(0)=0$.
+    
+    Also, $f(x)=\int_0^1h_x'(t)\dd t=\int_0^1f'(tx)\cdot x\dd t=\sum_{i=1}^nx_i\int_0^1Df_i(tx)\dd t$. So, define $g_i(x):=\int_0^1Df_i(tx)\dd t$, then $f(x)=\sum_{i=1}^nx_ig_i(x)$.
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 6}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bd}{\mathrm{bd }}
+\begin{document}
+\sffamily
+\noindent Note that 
+\begin{enumerate}
+    \item $0\in A$ and $1\in A$ because they are rational. 
+    \item $[0,1]\cap\mathbb Q\subset A$ as $A$ contains every rational number in $[0,1]$.
+\end{enumerate}
+Suppose $\exists x\in[0,1]\notin A$. Then, $x\in A^C$. As $A$ is closed, $A^C$ is open. 
+
+\noindent Hence, $\exists$ open rectangle $R=(a,b)\subset A^C$. WLOG, assume $0\leq a<b\leq 1$. By the density of $\mathbb Q$, $\exists y\in R\cap\mathbb Q\subset [0,1]\cap\mathbb Q\subset A$. 
+
+\noindent But also, $y\in R\subset A^C$, which contradicts $y\in A$; hence, there cannot exist $x\in[0,1]\notin A$ so $[0,1]\subset A$.  
+\end{document}

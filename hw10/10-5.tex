@@ -1,0 +1,38 @@
+\documentclass{exam}
+\title{MAT257 PSET 10---Question 5}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Define \(h:\R^3_{u,\theta,\varphi}\to\R^3_{r,\theta,z}\) so that \(h(u,\theta,\varphi):=(u\cos\varphi+b,\theta,u\sin\varphi)\) and \(B=(0,a)\times(0,2\pi)\times(0,2\pi).\) Clearly, \(g\) and \(h\) are \(C^1\) so \(g\circ h\) is also
+    \(C^1.\) The determinant of \((g\circ h)'\) is
+    \[\det((g\circ h)')=\det((g'\circ h)\cdot h')=\det(g'\circ h)\det(h')=(b+u\cos\varphi)(u).\]
+    Within \(B\), \(u\) is always positive and \(b>u\) so the determinent is always positive. 
+    
+    Note that \[h(B)=\{(r,\theta,z):0<(r-b)^2+z^2<a^2\text{ and }0<\theta<2\pi\}=\mathrm{int}\,A.\] As \(T=g(A),\mathrm{int}\,T=g(\mathrm{int}\,A)=(g\circ h)(B)\) because \(g\) is continuous. As \(1\) is bounded and \(\mathrm{bd}\,T\) is content zero, the integral over \(T\) is the same as the integral over the interior of \(T.\)
+
+    By the change of variables theorem, \[\int_T1=\int_{\mathrm{int}\,T}1=\int_{(g\circ h)(B)}1=\int_{B}|\det((g\circ h)')|=\int_B|\det((g'\circ h)\cdot h')|=\int_B(b+u\cos\varphi)(u)\]
+
+    we can integrate over the closure of \(B\) to get the same answer. As the closure of \(B\) is closed, we can use Fubini's theorem to get 
+    \[\int_T1=\int_{\overline B}u(b+u\cos\varphi)=\int_0^{2\pi}\dd \theta\int_0^a\dd u\int_0^{2\pi}\dd\varphi(b+u\cos\varphi)(u)=2\pi^2a^2b\]
+\end{document}

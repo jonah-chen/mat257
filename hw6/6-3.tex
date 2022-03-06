@@ -1,0 +1,33 @@
+\documentclass{exam}
+\title{MAT257 PSET 6---Question 3}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    WLOG, assume $\partialderivative{(f,g)}{(y,z)}$ has rank 2 at $p_0$, hence it is invertible (as $\partialderivative{(f,g)}{(x,y,z)}$ is rank 2 at $p_0$, so the statement must true for at least one of $(x,y), (x,z), (y,z)$ and the rest of the proof is the same no matter which choice was made).
+    
+    Let $F=(f,g)$. $f$ and $g$ are $C^1$ so $F$ is $C^1$, the implicit function theorem guarentees the existance of $h(x)$ such that $F(x,h_1(x),h_2(x))=0$ in an open neighborhood about $p_0$.
+
+    Thus locally, the curve described by $f(x,y,z)=0\land g(x,y,z)=0$ can be parameterized with $x=x, y=h_1(x), z=h_2(x)$.
+
+
+\end{document}

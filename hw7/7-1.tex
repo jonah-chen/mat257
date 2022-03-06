@@ -1,0 +1,87 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item For a subrectangle $S$ and $y\in S$, $m_S(f)\leq f(y)$ and $m_S(y)\leq g(y)$ so $m_S(f)+m_S(g)\leq f(y)+g(y)$. Since this is true for any $y\in S$, $m_S(f)+m_S(g)\leq m_S(f+g)$.
+        
+        Similarly, $M_S(f)\geq f(y)$ and $M_S(g)\geq g(y)$ so $M_S(f)+M_S(g)\geq M_S(f+g)$.
+
+        For any partition $P$ of $A$,
+        \begin{align*}
+            L(f+g,P)=\sum_{S\in P} m_S(f+g) v(S)\geq\sum_{S\in P} m_S(f) v(S) + \sum_{S\in P} m_S(g) v(S)=L(f,P)+L(g,P)\\
+            U(f+g,P)=\sum_{S\in P} M_S(f+g) v(S)\leq\sum_{S\in P} M_S(f) v(S) + \sum_{S\in P} M_S(g) v(S)=U(f,P)+U(g,P)\\
+        \end{align*}
+
+        \item To show $f+g$ is integrable on $A$, and given $\varepsilon>0$, we need to find a partition $P$ such that $U(f+g,P)-L(f+g,P)<\varepsilon$. 
+        
+        As $f$ and $g$ are integrable on $A$, there exists partitions of $A$, $P_f$ and $P_g$, such that $U(f,P_f)-L(f,P_f)<\varepsilon/2$ and $U(g,P_g)-L(g,P_g)<\varepsilon/2$.
+
+        Let $P$ be the refinement of $P_f$ and $P_g$. Then,
+        \begin{align*}
+            U(f,P)-L(f,P)\leq U(f,P_f)-L(f,P_f)<\varepsilon/2\\
+            U(g,P)-L(g,P)\leq U(g,P_g)-L(g,P_g)<\varepsilon/2
+        \end{align*}
+        For $f+g$, $L(f,P)+L(g,P)\leq L(f+g,P)\leq U(f+g,P)\leq U(f,P)+U(g,P)$. Hence, $U(f+g,P)-L(f+g,P)<\varepsilon$.
+        
+        For any $P_f$ and $P_g$ of $A$, let $P$ be the refinement of $P_f$ and $P_g$. Then,
+        \begin{align*}
+            L(f,P)\geq L(f,P_f)\\
+            L(g,P)\geq L(g,P_g)\\
+            U(f,P)\leq U(f,P_f)\\
+            U(g,P)\leq U(g,P_g)
+        \end{align*}
+        So,
+        \begin{align*}
+            \sup_{P_f} L(f,P_f)+\sup_{P_g} L(g,P_g)=\sup_P\{L(f,P)+L(g,P)\}\\
+            \inf_{P_f} U(f,P_f)+\inf_{P_g} U(g,P_g)=\inf_P\{U(f,P)+U(g,P)\}
+        \end{align*}
+
+        Then, $$\int_Af+\int_Ag=\sup_P\{L(f,P)+L(g,P)\}\leq\sup_PL(f+g,P)\leq\inf_PU(f+g,P)\leq\inf_P\{U(f,P)+U(g,P)\}=\int_Af+\int_Ag$$
+
+        Thus, $\sup_PL(f+g,P)=\inf_PU(f+g,P)=\int_Af+g=\int_Af+\int_Ag$.
+
+        \item Case $c=0:cf=0\implies\int_A0=0\int_Af=0$ as $f$ is integrable on $A$.
+        
+        Case $c>0$: For any partition $P$ of $A$,
+        \begin{align*}
+            L(cf,P)=\sum_{S\in P} m_S(cf) v(S)=c\sum_{S\in P}m_S(cf)v(S)=cL(f,P)\\
+            U(cf,P)=\sum_{S\in P} M_S(cf) v(S)=c\sum_{S\in P}M_S(cf)v(S)=cU(f,P)
+        \end{align*}
+        Then, $\sup L(cf,P)=c\sup L(f,P)$ and $\inf U(cf,P)=c\inf U(f,P)$. As $f$ is integrable on $A$, 
+        
+        $$\sup L(f,P)=\inf U(f,P)=\int_Af\implies\sup L(cf,P)=\inf U(cf,P)=\int_Acf=c\int_Af$$
+        
+        Case $c<0$. Then, for any partition $P$ of $A$,
+        \begin{align*}
+            L(cf,P)=\sum_{S\in P} m_S(cf) v(S)=c\sum_{S\in P}M_S(f)v(S)=cU(f,P)\\
+            U(cf,P)=\sum_{S\in P} M_S(cf) v(S)=c\sum_{S\in P}m_S(cf)v(S)=cL(f,P)
+        \end{align*}
+        
+        Then, $\sup L(cf,P)=c\inf U(f,P)$ and $\inf U(cf,P)=c\sup L(f,P)$. As $f$ is integrable on $A$, 
+        
+        $$\sup L(f,P)=\inf U(f,P)=\int_Af\implies\sup L(cf,P)=\inf U(cf,P)=\int_Acf=c\int_Af$$
+
+    \end{enumerate}
+\end{document}

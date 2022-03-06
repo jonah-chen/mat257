@@ -1,0 +1,35 @@
+\documentclass{exam}
+\title{MAT257 PSET 14---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    As \(\gamma:[0,1]\to\R^2\) is differentiable, define coordinate functions \(\gamma_1,\gamma_2:[0,1]\to\R\) that are differentiable so that \[\gamma(t)=\gamma_1(t)e_1+\gamma_2(t)e_2.\] 
+
+    As \(|\gamma(t)|=1\),\(f(t)=:\langle\gamma(t),\gamma(t)\rangle=(\gamma_1(t))^2+(\gamma_2(t))^2=1.\) Hence,\[
+        f'(t)=2\gamma_1(t)\gamma_1'(t)+2\gamma_2(t)\gamma_2'(t)=2\langle\gamma'(t),\gamma(t)\rangle=0\implies\langle\gamma'(t),\gamma(t)\rangle=0\]
+    The tangent vector to the curve \(\gamma(t)\) is \(\gamma'(t)_{\gamma(t)},\)
+    \[\langle\gamma'(t)_{\gamma(t)},\gamma(t)_{\gamma(t)}\rangle=\langle\gamma'(t),\gamma(t)\rangle=0\] 
+    so for any \(t\), the tangent vector to the curve \(\gamma'(t)_{\gamma(t)}\) is perpendicular to the \(\gamma(t)_{\gamma(t)}\).
+\end{document}

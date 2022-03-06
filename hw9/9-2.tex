@@ -1,0 +1,49 @@
+\documentclass{exam}
+\title{MAT257 PSET 9---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{lemma}
+        If $A$ is an arbitrary subset of $\R^n$, then $A$ is contained in a countable union of compact sets.
+        \begin{proof}
+            The any point in $\R^n$ is contained in $D=\bigcup_{n=1}^\infty\{|x|\leq n\}$, hence any arbiturary subset of $\R^n$ is also contained in $D$. All sets $\{|x|\leq n\}$ are closed and bounded, so they are compact.
+        \end{proof}
+    \end{lemma}
+    If $f$ is smooth at every $a\in A$, then $\forall a\in A\,\exists$ open set $U_a$ and a function $\,g_a\in C^\infty:U_a\to\R$ s.t. $x\in U_a\implies g(x)=f(x)$.
+
+    From the lemma, $A$ is a countable union of compact sets $D_1,D_2,\dots$. 
+    
+    For $x\in D_i$ there is an open set $U_x$ where the corresponding $C^\infty$ function $g_x$ agrees with $f$ on $U_x\cap A$. 
+    
+    Let $\{U_x:x\in D_i\}$ be an open cover of $D_i$. Since $D_i$ is compact, there is a finite subcover $\mathcal{U}_i=\{U_{x_1},\dots, U_{x_n}\}$. This is true for every $i$.
+
+    Let $\mathcal{U}=\bigcup_{i=1}^\infty\mathcal{U}_i$. This is a countable collection of open sets because it is a countable union of finite collections. $\mathcal{U}$ also covers $A$. Now, consider the open cover $\mathcal{V}=\{U\in\mathcal{U}:U\cap A\neq\emptyset\}\equiv\{V_{x_i},V_{x_2},\dots\}$.   
+    
+    By the partition of unity theorem, there exists a $C^\infty$ partition of unity $\Phi=\{\varphi_i\}$ of $\mathcal{V}$ such that $\varphi_i$ is subordinate to $V_{x_i}$. 
+    
+    As $\mathcal{V}$ is an open cover of $A$, then $V=\bigcup_{E\in\mathcal{V}}E$ is an open set containing $A$.
+    
+    Define $F:V\to\R$ $$F(x)=\sum_{i=1}^\infty g_{x_i}(x)\,\varphi_{i}(x)$$
+    $F$ is smooth as $g_{x_i}$ and $\varphi_i$ are smooth for all $i$. Since $g_{x_i}=f$ on the support of $\varphi_i$, then $x\in A\implies F(x)=f(x)$.
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{exam}
+\title{MAT257 PSET 14---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    The tangent line of \(f\) at \(t\) is given by \(y=f(t)+xf'(t)\). The tangent vector to the curve \(\gamma(t)=(t,f(t))\) is \[\gamma'(t)_{\gamma(t)}=(1,f'(t))_{(t,f(t))}.\]
+
+    The ``head'' of the tangent vector is \((t,f(t))\) and the ``end point'' of the tangent vector is at \((t+1,f(t)+f'(t))\). Clearly this point lies on the line \(y=f(t)+xf'(t)\) with \(x=1\). Then, \(y=f(t)+1f'(t)\).
+\end{document}

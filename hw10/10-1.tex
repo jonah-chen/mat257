@@ -1,0 +1,36 @@
+\documentclass{exam}
+\title{MAT257 PSET 10---Question 1}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Let \(U=\{(r,\phi,\theta):0<r<a, 0<\phi<\pi,0<\theta<2\pi\}\) be open set and $g$ be the coordinate transformation \[g(r,\phi,\theta)=(r\cos\phi\cos\theta,r\cos\phi\sin\theta,r\sin\phi).\] Then, \(g(U)=\{(x,y,z):x^2+y^2+z^2<a^2, z>0\}=V\) and if \(f(x,y,z)=z\) then \(f(g(r,\phi,\theta))=r\sin\phi\). \(g'\) is also continuous on all of \(\R^3\). Using mathematica, it is possible to compute \(\det(g')=r^2\cos\phi.\) Thus, there are no $x\in U$ where \(\det(g')=0\). By the change of variables theorem,
+    \begin{equation*}
+        \int_{g(U)}z=\int_U(f\circ g)|\det(g')|=\int_Ur^3\sin\phi|\cos\phi|
+    \end{equation*}
+     Then, by fubini's theorem, we can integrate over the compact set \(\overline U\)
+    \begin{equation*}
+        \int_{\overline U}r^3\sin\phi|\cos\phi|=\int_0^ar^3\dd r\left(\int_0^\pi\sin\phi|\cos\phi|\dd\phi\left(\int_0^{2\pi}\dd\theta\right)\right)=\frac{\pi a^4}{2}.
+    \end{equation*}
+    As \(U\) has content zero boundary, so \[\int_U(f\circ g)|\det(g')|=\int_{\overline U}(f\circ g)|\det(g')|=\frac{\pi a^4}{2}.\]
+\end{document}

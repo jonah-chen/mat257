@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \begin{enumerate}[label=(\alph*)]
+        \item $A$ is closed $\implies A^C$ is open. Then, $x\in A^C\implies\exists$ open ball with radius $d>0$, $B=\{x_0\in\R^n: |x_0-x|<d\}\subset A^C$. 
+        
+        Take any point $y\in A$. Then, $y\notin B$ as $B\subset A^C$. Then, $|y-x|\geq d$.
+        \item B
+        \item Consider increasing sequences $a_n=\begin{pmatrix}
+            n+\frac{1}{n}\\0
+        \end{pmatrix}$ and $b_n=\begin{pmatrix}
+            n\\0
+        \end{pmatrix}$ for $n\in\mathbb Z_+$. Let $A=\{a_n\}_{n=2}^\infty$ and $B=\{b_n\}_{b=2}^\infty$.
+        
+        $A$ is closed because $A^C$ is the union of open sets $\left((-\infty,a_2)\times\R\right)\cup\left(\bigcup_{n=2}^\infty(a_n, a_{n+1})\times\R\right)\cup(\R\times (0,\infty))\cup(\R\times(-\infty,0))$. 
+        
+        Similarly, $B$ is closed because $B^C=\left((-\infty,b_2)\times\R\right)\cup\left(\bigcup_{n=2}^\infty(b_n, b_{n+1})\times\R\right)\cup(\R\times (0,\infty))\cup(\R\times(-\infty,0))$
+        
+        However, for any $d>0$ define $f=\left\lceil\frac{1}{d}\right\rceil$. Then, $|a_f-b_f|=\frac{1}{f}\leq d$.
+    \end{enumerate}
+\end{document}

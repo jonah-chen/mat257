@@ -1,0 +1,32 @@
+\documentclass{exam}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    $[\implies]$. $C$ is compact, therefore every open cover $\{U\}_{\alpha\in I}$ has a finite subcover $\{U\}_{\alpha\in I'}$. Let $T=\bigcup_{\alpha\in I'}U_{\alpha}$. By definition of a subcover, $C\subset T$.  If $\{U\}_{\alpha\in I}$ is closed under union of pairs, then $T\in \{U\}_{\alpha \in I}$. 
+
+    $[\impliedby]$ Consider the contrapositive case. If a set $C$ is not compact, then there is at least one open cover that is closed under unions without a set $T$ such that $C\subset T$. 
+
+    Now, consider $C=\R^+$, the positive real numbers, and the cover $U=\{n\in\mathbb Z^+:(0,n)\}$. $U$ is closed under unions because given any $n,m\in\mathbb Z^+, (0,n)\cup(0,m)=(0,\max\{n,m\})$ and $\max\{n,m\}\in\mathbb Z^+$. 
+    
+    Assume there is a set $T\in U$ s.t. $C\subset T$. As $T\in U, T=(0,M)$ for some $M\in\mathbb Z^+$. However, consider the number $b=M+\frac{1}{3}\in\R^+$. Clearly, $b\notin T$. Thus, there cannot be a set $T$ in this cover where $C\subset T$. 
+\end{document}

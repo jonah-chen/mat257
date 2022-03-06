@@ -1,0 +1,55 @@
+\documentclass{exam}
+\title{MAT257 PSET 6---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item If $f$ satisfies the hypotheses of the implicit function theorem at $x=3$ (and $y=(-1,2)$ because $f(x,y)=0$ for this choice of $x$ and $y$. Then as a consequence, there exists $g$ where $f(x,g(x))=f(x,g_1(x),g_2(x))=0$ in a neighborhood about $x=3$. 
+        
+        $f$ is $C^1$ everywhere so it is continuously differentiable at $(3,-1,2)$. Secondly, $\partialderivative{f}{y}(3,-1,2)=\begin{pmatrix}
+            2&1\\-1&1
+        \end{pmatrix}$ which has a nonzero determinent of 3.
+        
+        \item Consider the function $h(x)=(x,g(x))$. Then $f(x,g(x))=(f\circ h)(x)=0$ inside $B$. By chain rule,
+        \begin{align*}
+            0=f'(3,-1,2)h'(3)=\begin{pmatrix}
+                1 & 2 & 1\\1 & -1 & 1
+            \end{pmatrix}\begin{pmatrix}
+                1\\g'(3)
+            \end{pmatrix}=\begin{pmatrix}
+                1\\1
+            \end{pmatrix}+\begin{pmatrix}
+                2&1\\-1&1
+            \end{pmatrix}g'(3)\\
+            g'(3)=-\begin{pmatrix}
+                2&1\\-1&1
+            \end{pmatrix}^{-1}\begin{pmatrix}
+                1\\1
+            \end{pmatrix}=\begin{pmatrix}
+                0\\-1
+            \end{pmatrix}
+        \end{align*}
+        
+        \item Consider solving this equation for the unknowns $x$ and $y_2$ in terms of $y_1$. Then, let $z=(x,y_2)$ so $\det\left(\partialderivative{f}{z}\right)=0$ so the implicit function theorem does not apply.
+    \end{enumerate}
+\end{document}

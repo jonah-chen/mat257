@@ -1,0 +1,62 @@
+\documentclass{exam}
+\title{MAT257 PSET 15---Question 1}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=\alph*)]
+        \item We know that \[\dd f=\partialderivative{f}{x}\dd x+\partialderivative{f}{y}\dd y+\partialderivative{f}{z}\dd z.\] And \[\mathrm{grad}f=\partialderivative{f}{x}\partial_x+\partialderivative{f}{y}\partial_y+\partialderivative{f}{z}\partial_z\]
+        Hence its component functions of \(\mathrm{grad}f\) are \(F_1=\partialderivative{f}{x},F_2=\partialderivative{f}{y},F_3=\partialderivative{f}{z}.\) Then,
+        \[\omega_{\mathrm{grad}f}^1=\partialderivative{f}{x}\dd x+\partialderivative{f}{y}\dd y+\partialderivative{f}{z}\dd z=df,\]
+        as desired. 
+
+        We know that \[\mathrm{curl}f=\left(\partialderivative{F_3}{y}-\partialderivative{F_2}{z}\right)\partial_x+\left(\partialderivative{F_1}{z}-\partialderivative{F_3}{x}\right)\partial_y+\left(\partialderivative{F_2}{x}-\partialderivative{F_1}{y}\right)\partial_z.\]
+
+        Hence, its component functions of \(G=\mathrm{curl}f\) are \(G_1=\partialderivative{F_3}{y}-\partialderivative{F_2}{z},G_2=\partialderivative{F_1}{z}-\partialderivative{F_3}{x},G_3=\partialderivative{F_2}{x}-\partialderivative{F_1}{y}.\)
+        \begin{align*}
+            \dd(\omega_F^1)&=\dd(F_1\dd x+F_2\dd y+F_3\dd z)\\
+            &=\dd x\wedge\left(\partialderivative{F_1}{x}\dd x+\partialderivative{F_2}{x}\dd y+\partialderivative{F_3}{x}\dd z\right)+\dd y\wedge\left(\partialderivative{F_1}{y}\dd x+\partialderivative{F_2}{y}\dd y+\partialderivative{F_3}{y}\dd z\right)+\dd z\wedge\left(\partialderivative{F_1}{z}\dd x+\partialderivative{F_2}{z}\dd y+\partialderivative{F_3}{z}\dd z\right)\\
+            &=\partialderivative{F_2}{x}\dd x\wedge\dd y+\partialderivative{F_3}{x}\dd x\wedge\dd z+\partialderivative{F_1}{y}\dd y\wedge\dd x+\partialderivative{F_3}{y}\dd y\wedge\dd z+\partialderivative{F_1}{z}\dd z\wedge\dd x+\partialderivative{F_2}{z}\dd z\wedge\dd y\\
+            &=\left(\partialderivative{F_3}{y}-\partialderivative{F_2}{z}\right)\dd y\wedge\dd z+\left(\partialderivative{F_1}{z}-\partialderivative{F_3}{x}\right)\dd z\wedge\dd x+\left(\partialderivative{F_2}{x}-\partialderivative{F_1}{y}\right)\dd x\wedge\dd y\\
+            &=G_1\dd y\wedge\dd z+G_2\dd z\wedge\dd x+G_3\dd x\wedge\dd y\\
+            &=\omega_G^2=\omega_{\mathrm{curl}F}^2,
+        \end{align*}
+        as desired.
+
+        We know that \[\mathrm{div} F=\partialderivative{F_1}{x}+\partialderivative{F_2}{y}+\partialderivative{F_3}{z}.\]
+        And,
+        \begin{align*}
+            \dd(\omega_F^2)&=\dd(F_1\dd y\wedge\dd z+F_2\dd z\wedge\dd x+F_3\dd x\wedge\dd y)\\
+            &=\partialderivative{F_1}{x}\dd x\wedge\dd y\wedge\dd z+\partialderivative{F_2}{y}\dd y\wedge\dd z\wedge\dd x+\partialderivative{F_3}{z}\dd z\wedge\dd x\wedge\dd y\\
+            &=\left(\partialderivative{F_1}{x}+\partialderivative{F_2}{y}+\partialderivative{F_3}{z}\right)\dd x\wedge\dd y\wedge \dd z\\
+            &=\mathrm{div}F\dd x\wedge\dd y\wedge\dd z,
+        \end{align*}
+        as desired.
+
+        \item \(\omega_{\mathrm{curl\,grad}f}^2=\dd(\omega_{\mathrm{grad}f}^1)=\dd(\dd f)=\dd^2f=0\implies\) the component functions of \(\mathrm{curl\,grad}f\) are zero so \(\mathrm{curl\,grad}f=0.\)
+        
+        \((\mathrm{div\,curl}\,F)\,\dd x\wedge\dd y\wedge\dd z=\dd(\omega_{\mathrm{curl}\,F}^2)=\dd(\dd(\omega_F^1))=d^2(\omega_F^1)=0\implies\mathrm{div\,curl}\,F=0.\)
+
+    \end{enumerate}
+\end{document}

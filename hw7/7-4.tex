@@ -1,0 +1,63 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 4}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{lemma}
+        Let $A$ be a closed rectangle, if $f:A\to\R$ then 
+        \begin{align*}
+            M_A(|f|)-m_A(|f|)\leq M_A(f)-m_A(f)
+        \end{align*}
+        \begin{proof}
+            Consider the case $M_A(f)\geq m_A(f)\geq 0$. Then, $|f|=f$ so $M_A(|f|)-m_A(|f|)=M_A(f)-m_A(f)$
+            
+            \vspace{10pt}
+            
+            Consider the case $0\geq M_A(f)\geq m_A(f)$. 
+            
+            Then $|f|=-f$ so $M_A(|f|)-m_A(|f|)=-m_A(f)-(-M_A(f))=M_A(f)-m_A(f)$
+            
+            \vspace{10pt}
+            
+            Consider the case $M_A(f)>0>m_A(f)$. 
+            
+            Then $m_A(|f|)=0$ and $M_A(|f|)=\max\{M_A(f),-m_A(f)\}$ thus $M_A(|f|)-0<M_A(f)-m_A(f)$.
+        \end{proof}
+    \end{lemma}
+
+    If $f$ is integrable, then $U(f,P)-L(f,P)<\varepsilon$ for any $\varepsilon>0$. By lemma 1,
+    \begin{align*}
+        U(|f|,P)-L(|f|,P)&=\sum_{S\in P}v(S)[M_S(|f|)-m_S(|f|)]\\
+        &\leq\sum_{S\in P}v(S)[M_S(f)-m_S(f)]=U(f,P)-L(f,P)\\
+    \end{align*} 
+
+    Hence, $U(|f|,P)-L(|f|,P)\leq U(f,P)-L(f,P)<\varepsilon$ so $|f|$ is integrable.
+
+    As it was shown (q3) that if $f,g$ are integrable on $A$, $f\leq g\implies\int_Af\leq\int_Ag$. Consider two cases:
+
+    If $\int_Af\geq0$. As $f\leq|f|$, $\left|\int_Af\right|=\int_Af\leq\int_A|f|$.
+
+    If $\int_Af<0$. As $-f\leq|f|$, $\left|\int_Af\right|=-\int_Af=\int_A-f\leq\int_A|f|$.
+
+    Hence, $\left|\int_Af\right|\leq\int_A|f|$.
+\end{document}

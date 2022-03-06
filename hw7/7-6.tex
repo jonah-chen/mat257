@@ -1,0 +1,40 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 6}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\sffamily
+\maketitle
+If $A$ is a countable union of open intervals, $A$ is an open set. Thus, $A^C$ is closed. 
+
+First, we show that $A^C\cap[0,1]\subset\mathrm{bd}A$ and thus $A\cup(A^C\cap[0,1])\supset[0,1]$. 
+
+Consider any point $a\in[0,1]:a\notin A$. Because of the density of $\mathbb Q$, there exists a rational number $b$ in any open set containing $a$. As $[0,1]\cap\mathbb Q\subset A$, then $b\in A$. Since any open set about $a$ has a point in $A$, which is $b$; and a point in $A^C$, which is $a$. Hence, $a\in\mathrm{bd} A$.
+
+As the union of two closed sets is a closed set, $A^C\cap[0,1]$ is closed. It is also clearly bounded hence $A^C\cap[0,1]$ is compact. 
+
+By way of contradiction, suppose $\mathrm{bd}A$ is measure zero. Then $A^C\cap[0,1]$ which is contained in $\mathrm{bd}A$ must also be measure zero, and because $A^C\cap[0,1]$ is also compact, $A^C\cap[0,1]$ must be content zero.
+
+So, there exists a finite collection of sets $D=\{(u_i,v_i)\}$ for $i=1,\dots,n$ that covers $A^C\cap[0,1]$ s.t. $\sum_{i=1}^n(v_i-u_i)<\varepsilon$ for any $\varepsilon>0$. 
+
+Choose $\varepsilon=\frac{1}{2}\left(1-\sum_{i=1}^\infty(b_i-a_i)\right)$. Then, $\sum_{i=1}^\infty(b_i-a_i)+\sum_{i=1}^n(v_i-u_i)<\sum_{i=1}^\infty(b_i-a_i)+\varepsilon<1$. However, a set with volume $1$ cannot be contained in a set with volume less than $1$. Thus, $[0,1]\nsubseteq A\cup(A^C\cap[0,1])$ which is a contradiction. Hence, $A^C\cap[0,1]$ is not content 0 and hence $\mathrm{bd}A$ is not measure zero.
+
+\end{document}

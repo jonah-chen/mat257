@@ -1,0 +1,40 @@
+\documentclass{exam}
+\title{MAT257 PSET 15---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    As \(x=r\cos\theta,y=r\sin\theta\) are zero forms, their exterior derivatives are
+    \begin{align*}
+        \dd x&=\partialderivative{x}{r}\dd r+\partialderivative{x}{\theta}\dd\theta=\cos\theta\dd r-r\sin\theta\dd\theta\\
+        \dd y&=\partialderivative{y}{r}\dd r+\partialderivative{y}{\theta}\dd\theta=\sin\theta\dd r+r\cos\theta\dd\theta
+    \end{align*}
+    We also know that \(x^2+y^2=r^2(\cos^2\theta+\sin^2\theta)=r^2.\) Then,
+    \begin{align*}
+        \frac{-y}{x^2+y^2}\dd x+\frac{x}{x^2+y^2}\dd y&=\frac{-r\sin\theta}{r^2}(\cos\theta\dd r-r\sin\theta\dd\theta)+\frac{r\cos\theta}{r^2}(\sin\theta\dd r+r\cos\theta\dd\theta)\\
+        &=\frac{-\cos\theta\sin\theta\dd r}{r}+\sin^2\theta\dd\theta+\frac{\sin\theta\cos\theta\dd r}{r}+\cos^2\theta\dd\theta\\
+        &=\dd\theta,
+    \end{align*}
+    as desired.
+\end{document}

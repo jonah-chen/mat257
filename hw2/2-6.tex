@@ -1,0 +1,46 @@
+\documentclass{exam}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    If $A\subset\R^n$ is not closed, then $A^C$ is not open. Thus, $\exists y\in A^C$ where each open ball containing $y$ intersects $A$. Define $f:A\to\R$ where $f(x)=\frac{1}{|x-y|}$. 
+
+    First, we show $f$ is unbounded. By way of contradiction, assume there is an upper bound $M$ s.t. $f(x)\leq M\,\forall x\in A$.
+    
+    Consider the open ball of radius $\frac{1}{M}$ about $y$: $B=\{x\in\R^n:|x-y|<\frac{1}{M}\}$. Let $S=B\cap A$. $S$ is not empty because its an open ball containing $y$; thus, it must intersect $A$. Take any point $s\in S$. $f(s)=\frac{1}{|s-y|}>M$. This contradicts that $f(x)$ is bounded above by $M$. Thus, $f$ must be unbounded. 
+    
+    Next, we show $f$ is continuous. It suffices to show that the preimage of every open interval on $\R$ is open in $A$, as every open set on $\R$ is the union of open intervals.
+
+    Consider the interval $D=(a,b)\subset\R$. Then,
+    
+    $$f^{-1}(D)=\{x\in A:a<\frac{1}{|x-y|}<b\}=\underbrace{\{x\in A:\frac{1}{|x-y|}>a\}}_{D_1}\cap\underbrace{\{x\in A:\frac{1}{|x-y|}<b\}}_{D_2}$$
+
+    Note that if $a\leq 0\implies D_1=\emptyset$ and $b\leq 0\implies D_2=A$, which are both open in $A$.
+
+    If $a>0$, $D_1$ is the intersection between $A$ and open ball with radius $\frac{1}{a}$ about $y$, which is open in $A$ by definition.
+
+    If $b>0$, $D_2$ is the intersection between $A$, and the complement of the closed ball of radius $\frac{1}{b}$ (i.e. $\{x\in\R^n:|x-y|\leq\frac{1}{b}\}$), which is an open set because its the complement of a closed set. Thus, $D_2$ is open in $A$. 
+
+    Since for any $D\subset\R$, $D_1$ and $D_2$ are open in $A$, the intersection of two open sets is an open set. Thus, $D$ open in $\R\implies f^{-1}(D)$ open in $A$, thus $f$ is continuous.
+
+
+\end{document}

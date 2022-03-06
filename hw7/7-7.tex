@@ -1,0 +1,53 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 7}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\sffamily
+\maketitle
+
+First, we show that if $f:[a,b]\to\R$ is an increasing function, then for any finite set of distinct points $x_1,\dots,x_n$$$\sum_{i=1}^n o(f,x_i)<f(b)-f(a)$$
+
+where $o(f,x)=\lim_{r\to 0}M_{B_{r}(x)}(f)-m_{B_{r}(x)}(f)$. For an increasing function, $x>y\implies f(x)>f(y)$ so 
+\begin{enumerate}
+    \item $M_{B_{r}(x)}(f)=f(x+r), m_{B_{r}(x)}(f)=f(x-r)$
+    \item $o(f,x)=\lim_{r\to 0}f(x+r)-f(x-r)$
+    \item $\forall s,t>0,\, o(f,x)<f(x+s)-f(x-t)$
+\end{enumerate}
+
+WLOG, assume $x_i<x_{i+1}$. Then, letting $a=x_0,b=x_{n+1}$
+\begin{align*}
+    \sum_{i=1}^n o(f,x_i)<\sum_{i=1}^nf(x_n+[x_{n+1}-x_n])-f(x_n-[x_n-x_{n-1}])=\sum_{i=1}^nf(x_{i+1})-f(x_{i-1})=f(b)-f(a)\\
+\end{align*}
+
+Define the set 
+\begin{align*}
+    D_n=\{x\in[a,b]:o(f,x)>1/n\} \text{ for } n=1,2,3,\dots
+\end{align*}
+As $f$ is discontinuous at $x\iff o(f,x)>0$, $\bigcup_{n=1}^{\infty}D_n$ contains the set of discontinuities of $f$.
+
+Moreover, each $D_n$ is a discrete set because $\frac{|D_n|}{n}\leq\sum_{x\in D_n}o(f,x)<f(b)-f(a)\implies |D_n|<n(f(b)-f(a))$. So, each $D_n$ is measure zero. A countable union of measure zero sets is measure zero. Therefore, $\bigcup_{n=1}^{\infty}D_n$ is measure zero hence the set of discontinuities of $f$ is measure zero.
+
+
+
+
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass{exam}
+\title{MAT257 PSET 3---Question 6}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    As $\det\begin{pmatrix}
+        a & b\\c & d
+    \end{pmatrix}=ad-bc, f(a,b,c,d)=ad-bc$. Define a function $g:\R^4\to\R$ where $g(a,b,c,d) := (d,-c,-b,a)$, thus, $g(a,b,c,d)(h)=dh_1-ch_2-bh_3+ah_4$. If $g$ is the derivative of $f$, it must be true that 
+    \begin{align*}
+        \lim_{h\to0}\frac{|f(a+h_1,b+h_2,c+h_3,d+h_4)-f(a,b,c,d)-g(a,b,c,d)h|}{|h|}=0
+    \end{align*}
+    Substituting the definition for $f$ and the guess for $f'$,
+    \begin{align*}
+        &\lim_{h\to0}\frac{|(a+h_1)(d+h_4)-(b+h_2)(c+h_3)-ad-bc-dh_1+ch_2+bh_3-ah_4|}{|h|}\\
+        =&\lim_{h\to 0}\frac{|ad+ah_4+h_1d+h_1h_4-bc-bh_3-h_2c-h_2h_3-ad+bc-dh_1+ch_2+bh_3-ah_4|}{|h|}\\
+        =&\lim_{h\to 0}\frac{|h_1h_4-h_2h_3|}{|h|}
+    \end{align*}
+    Invoking the triangle inequality, this limit must be less than or equal to $\lim_{h\to 0}\frac{|h_1h_4|}{|h|}+\lim_{h\to 0}\frac{|h_2h_3|}{|h|}$ Note that $|h|>|h_1|$ and $|h|>|h_2|$. Then,
+    \begin{align*}
+        &\lim_{h\to 0}\frac{|h_1h_4|}{|h|}\leq\lim_{h\to 0}\frac{|h_1h_4|}{|h_1|}=\lim_{h\to 0}|h_4|=0\\
+        &\lim_{h\to 0}\frac{|h_2h_3|}{|h|}\leq\lim_{h\to 0}\frac{|h_2h_3|}{|h_2|}=\lim{h\to 0}|h_3|=0
+    \end{align*}
+    as when $h\to0$, all its components $h_i\to 0$ for $i=1,2,3,4$.
+    Therefore, the initial limit 
+    \begin{align*}
+        &\lim_{h\to0}\frac{|f(a+h_1,b+h_2,c+h_3,d+h_4)-f(a,b,c,d)-g(a,b,c,d)h|}{|h|}\leq 0+0\\
+        &\lim_{h\to0}\frac{|f(a+h_1,b+h_2,c+h_3,d+h_4)-f(a,b,c,d)-g(a,b,c,d)h|}{|h|}=0
+    \end{align*}
+    Hence, $f$ is differentiable and $f'=g$ where $g(a,b,c,d)=(d,-c,-b,a)$.
+\end{document}

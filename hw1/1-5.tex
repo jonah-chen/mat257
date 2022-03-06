@@ -1,0 +1,51 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 5}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bd}{\mathrm{bd }}
+\begin{document}
+\sffamily
+As $A$ is the union of open intervals, $A$ is an open set. Thus, $\bd A\cap A=\emptyset$.
+
+Next, show $\bd A\subset[0,1]$.
+\begin{itemize}
+    \item If $x>1$, consider the open rectangle $R=(1,x+1)\ni x$. Clearly, $A\cap R=A\cap (1,x+1)=\emptyset$. Hence, $x\notin\bd A$. 
+    \item If $x<0$, consider the open rectangle $R=(x-1,0)\ni x$. Clearly, $A\cap R=A\cap (x-1,0)=\emptyset$. Hence, $x\notin\bd A$. 
+\end{itemize}
+Thus, $x\in\bd A\implies 0\leq x\leq 1\implies\bd A\subset[0,1]$. 
+
+Consider $x\in \bd A$. $x\notin A$ because $\bd A\cap A=\emptyset$ and $x\in[0,1]$ because $\bd A\subset[0,1]$. Hence, $[0,1]\setminus A\supset\bd A$.
+
+Next, show $[0,1]\setminus A\subset\bd A$. For any $x\in[0,1]:x\notin A$, consider every open rectangle $R=(a,b)\ni x$ where $a<b$.
+
+Due to the density of $\mathbb Q$ over $\R$, there exists a rational in every open interval. 
+\begin{itemize}
+    \item If $0\leq a<b\leq 1$, $\exists y\in\mathbb Q:y\in(a,b)\subset(0,1)$.
+    \item If $a<0<b<1$, $(a,b)=(a,0)\cup\{0\}\cup(0,b)$. Hence, $\exists y\in\mathbb Q:y\in(0,b)\subset(0,1)$.
+    \item If $0<a<1<b$, $(a,b)=(a,1)\cup\{1\}\cup(1,b)$. Hence, $\exists y\in\mathbb Q:y\in(a,1)\subset(0,1)$.
+    \item If $a<0<1<b$, $(a,b)=(a,0)\cup\{0\}\cup(0,1)\cup\{1\}\cup(1,b)$. Hence, $\exists y\in\mathbb Q:y\in(0,1)$.
+\end{itemize}
+Since all rationals in $(0,1)$ are contained in $A$, $y\in A$. Hence, $x\in R\cap A^C$ and $y\in R\cap A$ for every open rectangle $R\ni x$. 
+
+Hence, $x\in [0,1]\setminus A\implies x\in\bd A$ and $[0,1]\setminus A\subset \bd A$.
+
+As it was shown that $[0,1]\setminus A\subset\bd A$ and $[0,1]\setminus A\supset\bd A$, then $[0,1]\setminus A=\bd A$ as desired.
+\end{document}

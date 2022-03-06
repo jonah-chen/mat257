@@ -1,0 +1,51 @@
+\documentclass{exam}
+\title{MAT257 PSET 13---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    For \(\omega\in\Lambda^{n-k}(V)\) and \(\lambda\in\Lambda^k(V)\). Define the function \(\psi_k:\Lambda^{n-k}(V)\to(\Lambda^k(V))^*\) as
+    \[
+        \psi_k(\omega)(\lambda) = \chi(\omega\wedge\lambda)
+    \]
+    We claim \(\psi_k\) is an isomorphism. Given any \(\omega,\xi\in\Lambda^{n-k}(V)\) and \(a,b\in\R\),
+    \begin{align*}
+        \psi_k(a\omega+b\xi)(\lambda)
+        &=\chi((a\omega+b\xi)\wedge\lambda)\\
+        &=\chi(a\omega\wedge\lambda+b\xi\wedge\lambda)\\
+        &=a\chi(\omega\wedge\lambda)+b\chi(\xi\wedge\lambda)\\
+        &=a\psi_k(\omega)+b\psi_k(\xi)\\
+    \end{align*}
+    Hence, \(\psi_k\) is linear. As \(\psi_k\) is a linear map between \(\begin{pmatrix}
+        n\\k
+    \end{pmatrix}\) dimensional vector spaces, we need to show that \(\psi_k\) is 1-to-1, which is equivalent to showing the null space contains only the zero vector. 
+    
+    By way of contradiction, suppose \(\exists\,\omega\neq0\in\Lambda^{n-k}(V): \psi_k(\omega)=0\). Then, for any \(\lambda\in\Lambda^{k}(V)\), $\psi_k(\omega)(\lambda)=\chi(\omega\wedge\lambda)=0$. As \(\chi\) is an isomorphism, \(\omega\wedge\lambda=0\) so for any $n$ vectors $v_1,\dots,v_n\in V$,
+    \[
+        \omega\wedge\lambda(v_1,\dots,v_n)=\frac{1}{n!(n-k)!}\sum\omega(v_1,\dots,v_k)\lambda(v_{k+1},\dots,v_n)
+    \]
+    
+    (I can't really figure the rest out)
+
+\end{document}

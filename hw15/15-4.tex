@@ -1,0 +1,40 @@
+\documentclass{exam}
+\title{MAT257 PSET 15---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{align}
+        \omega&=xy\dd x+3\dd y-yz\dd z\\
+        \dd\omega&=y\dd x\wedge\dd x+x\dd y\wedge\dd x-z\dd y\wedge\dd z-\dd z\wedge\dd z=-x\dd x\wedge\dd y-z\dd y\wedge\dd z\\
+        \dd(\dd\omega)&=-\dd x\wedge\dd x\wedge\dd y-\dd z\wedge\dd y\wedge\dd z=0\label{1}\\
+        \eta&=x\dd x-yz^2\dd y+2x\dd z\\
+        \omega\wedge\eta&=(6x-y^2z^3)\dd y\wedge\dd z+(-xyz-2x^2y)\dd z\wedge\dd x+(-3-xy^2z^2)\dd x\wedge\dd y\\
+        \dd\eta&=2yz\dd y\wedge\dd z-2\dd z \wedge\dd x\\
+        \dd(\omega\wedge\eta)&=(6-xz-2x^2-2xy^2z)\dd x\wedge\dd y\wedge\dd z\\
+        (\dd\omega)\wedge\eta&=(-2x^2-xz)\dd x\wedge\dd y\wedge\dd z\\
+        \omega\wedge(\dd\eta)&=(2xy^2z-6)\dd x\wedge\dd y\wedge\dd z\\
+        (\dd\omega)\wedge\eta-\omega\wedge(\dd\eta)&=(-2x^2-xz-2xy^2z+6)\dd x\wedge\dd y\wedge\dd z=\dd(\omega\wedge\eta)\label{2}
+    \end{align}
+    The direct computations \eqref{1} and \eqref{2} verified the two theorems respectively.
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{exam}
+\title{MAT257 PSET 4---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item By 1-variable Fundamental Theorem of Calculus,
+        \begin{align*}
+            \partial_x f(x,y)&=g(x+y)\\
+            \partial_y f(x,y)&=g(x+y)
+        \end{align*}
+        \item $\partial_xf(x,y)=g(x)$. Note that $\int_y^xg=-\int_x^yg$. Hence, $\partial_yf(x,y)=-g(y)$.
+        \item Define $h(u)=\int_a^ug$ and $k(x,y)=xy$. Then, $f(x,y)=h(k(x,y))$ By chain rule, 
+        \begin{align*}
+            \partial_xf(x,y)&=h'(k(x,y))\cdot\partial_xk=g(xy)\cdot y\\
+            \partial_yf(x,y)&=h'(k(x,y))\cdot\partial_yk=g(xy)\cdot x
+        \end{align*}
+        \item As $f$ does not depend on $x$, $\partial_xf=0$. For the $y$ partial derivative, note that $f(x,y)=h(h(y))$ so $\partial_yf(x,y)=(h\circ h)'(y)$. By chain rule (single variable), \begin{align*}
+            \partial_yf(x,y)=(h\circ h)'(y)=h'(h(y))\cdot h'(y)=g(h(y))\cdot g(y)=g\left(\int_{b}^yg\right)\cdot g(y)
+        \end{align*}
+    \end{enumerate}
+\end{document}

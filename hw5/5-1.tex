@@ -1,0 +1,47 @@
+\documentclass{exam}
+\title{MAT257 PSET 5---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{lemma}
+        If $f:A\to\R^n$ is continuously differentiable 1-1 function with a invertiable derivative $\forall x\in A$, then $x\in A\implies\exists X\ni x$ such that $f(X)$ is open. Moreover, for any open subset $Y\subset X$, $f(Y)$ is open.
+
+        \begin{proof}
+            Let $g|_X:f(X)\to X$ such that $g(x)=f^{-1}(x)$. As $f$ satisfies the hypotheses of the inverse function theorem about $x$, a continuous function $g|_X$ must exist for some $X\ni x$. By definition of continuity, the preimage of any open set is open. So, for any open set $Y\subset X$, $(g|_X)^{-1}(Y)=f(Y)$ is an open set. Since $X\subset X$ and $X$ is open, $f(X)$ is also open. 
+        \end{proof}
+    \end{lemma}
+
+    Consider an open set $B\subset A$. As $f$ and any $x\in B$ satisfies the hypotheses of the Lemma 1, $\exists X\ni x$ such that $f(X\cap B)$ is open since $X\cap B$ is open because the intersection of two open sets $X$ and $B$ is an open set, and $X\cap B\subset X$.
+
+    As this is satisfied for all points $x\in B$, consider the set
+    \begin{align*}
+        D=\bigcup_{x\in B}f(X\cap B)
+    \end{align*}
+    As $D$ is a union of open sets, $D$ is an open set. Note that $f(A\cup B)=f(A)\cup f(B)$ thus $D=f(B)$. So, $f(B)$ is an open set.
+
+    As $f$ satisfies the hypotheses of the inverse function theorem for all $x\in A$, then $\exists X\ni x$ such that $f^{-1}:f(X)\to X$ is differentiable with the derivative being 
+    \begin{align*}
+        (f^{-1})'(y)=[f'(f^{-1}(y))]^{-1}
+    \end{align*}
+    As all $x\in A$ allow $f$ to satisfy the hypotheses of the inverse value theorem, this formula for the derivative of the inverse of $f$ is valid for all $y\in f(A)$ since $f$ is one-to-one. That means $f^{-1}$ is differentiable for all $y\in f(A)$.
+\end{document}

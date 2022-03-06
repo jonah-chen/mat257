@@ -1,0 +1,67 @@
+\documentclass{exam}
+\title{MAT257 PSET 5---Question 3}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item Suppose $f$ is not 1-1. Then, there exists two distinct numbers $a,b\in\R$ such that $f(a)=f(b)$. WLOG suppose $a<b$. As $f$ is differentiable on $\R$, $f$ is continuous on $[a,b]$ and $f$ is differentiable on $(a,b)$. Therefore, by special case of mean value theorem (Rolle's), $\exists c\in (a,b)$ where $f'(c)=0$, which contridicts $f'(a)\neq0\forall a\in\R$.
+        
+        \item Clearly, $f$ is not 1-1 as $f(0,0)=f(0,2\pi)=(0, 0)$.
+        
+        We can find $f'(x,y)$ by using the partial derivatives of $f$.
+        \begin{align*}
+            f'(x,y)=\begin{pmatrix}
+                \partial_x f_1 & \partial_y f_1\\
+                \partial_x f_2 & \partial_y f_2
+            \end{pmatrix}=\begin{pmatrix}
+                e^x\cos y&-e^x\sin y\\
+                e^x\sin y&e^x\cos y
+            \end{pmatrix}&=e^x\begin{pmatrix}
+                \cos y&-\sin y\\
+                \sin y&\cos y
+            \end{pmatrix}
+        \end{align*}
+        This is just a nonzero quantity $e^x$ multipled by a rotation matrix by angle $y$. Thus, the inverse should be 
+        \begin{align*}
+            (f')^{-1}(x,y)=e^{-y}\begin{pmatrix}
+                \cos y&\sin y\\-\sin y&\cos y
+            \end{pmatrix}
+        \end{align*}
+        We can verify that this is true for all $(x,y)\in\R^2$ by verifying that $(f')\circ(f')^{-1}=I$ for all $x$ and $y$.  Thus,
+        \begin{align*}
+            (f')(f')^{-1}(x,y)&=e^x\begin{pmatrix}
+                \cos y&-\sin y\\
+                \sin y&\cos y
+            \end{pmatrix}e^{-y}\begin{pmatrix}
+                \cos y&\sin y\\-\sin y&\cos y
+            \end{pmatrix}\\
+            &=\begin{pmatrix}
+                \cos^2y+\sin^2y&-\sin y\cos y+\sin y\cos y\\
+                -\sin y\cos y+\sin x\cos y&\cos^2y+\sin^2y
+            \end{pmatrix}\\
+            &=\begin{pmatrix}
+                1&0\\0&1
+            \end{pmatrix}=I
+        \end{align*}
+    \end{enumerate}
+\end{document}

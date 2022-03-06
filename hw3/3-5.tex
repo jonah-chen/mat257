@@ -1,0 +1,91 @@
+\documentclass{exam}
+\title{MAT257 PSET 3---Question 5}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    Please note that for this question, we will use the einstein summation convention where repeated indices in one term will be summed over. Also, note that superscripts on variables does not represent powers with the exception of ``2'' which indicate a number is squared.
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $e_i$, $i=1,\dots,n$ be the standard basis for $\R^n$, and $f_i,i=1,\dots,m$ be the standard basis for $\R^m$. 
+        
+        Then, any $h\in\R^n$ can be expressed as $h=h^ie_i$, and any $k\in\R^m$ can be expressed as $k=k^jf_j$.
+
+        As $f:\R^n\times\R^m\to\R^p$, define 
+        \begin{align*}
+            M:&=\max_{1\leq i\leq n,1\leq j\leq m}|f(e_i,f_j)|\\
+            H:&=\max_{1\leq i\leq n} |h^i|\\
+            K:&=\max_{1\leq j\leq m} |k^j|\\
+            L:&=\max\{H,K\}
+        \end{align*}
+
+        As $f$ is bilinear, 
+        \begin{align*}
+            |f(h,k)|=|h^ik^jf(e_i,f_j)|\leq M\sum_{i=1}^n\sum_{j=1}^m|h^i||k^j|\leq MnmHK\leq MnmL^2
+        \end{align*}
+
+        Assume either $h$ or $k$ is nonzero. Then, $L>0$ and both
+        \begin{align*}
+            |(h,k)|&=\sqrt{h^ih_i+k^jk_j}\geq\sqrt{L^2}=L\\
+            |(h,k)|&=\sqrt{h^ih_i+k^jk_j}\leq\sqrt{\underbrace{L^2+\dots+L^2}_{n+m\:\text{times}}}=L\sqrt{n+m}
+        \end{align*}
+
+        for $h\in\R^n,k\in\R^m$ let $\delta=\frac{\varepsilon}{Mnm}$, so $\varepsilon=\delta Mnm$. Then,
+        \begin{align*}
+            \forall\varepsilon>0,0<|(h,k)|<\delta&\implies
+            |f(h,k)|\leq MnmL^2\leq Mnm|(h,k)|^2<Mnm\delta|(h,k)| =\varepsilon|(h,k)|\\
+            &\therefore\lim_{(h,k)\to 0}\frac{|f(h,k)|}{|(h,k)|}=0
+        \end{align*}
+        \item From Spivak pp.16, a derivative of $f$ at $a$ is a linear transformation where 
+        \begin{align*}
+            \lim_{h\to 0}\frac{|f(a+h)-f(a)-Df(a)h|}{|h|}=0
+        \end{align*}
+        
+        Consider $Df(a,b)(x,y)=f(a,y)+f(x,b)$. We first show that $Df(a,b)$ is linear. Consider two vectors of $(x,y), (z,w)\in\R^n\times\R^m$ and a scalar $t\in\R$. Then,
+        \begin{align*}
+            Df(a,b)[(x,y)+(z,w)]&=Df(a,b)(x+z,y+w)\\
+            &=f(a,y+w)+f(x+z,b)\\
+            &=f(a,y)+f(x,b)+f(a,w)+f(z,b)\\
+            &=Df(a,b)(x,y)+Df(a,b)(z,w)\\
+            Df(a,b)[t(x,y)]&=Df(a,b)(tx,ty)\\
+            &=f(a,ty)+f(tx,b)\\
+            &=tf(a,y)+tf(x,b)\\
+            &=tDf(a,b)(x,y)
+        \end{align*}
+
+        Next, consider the limit. 
+        \begin{align*}
+            \lim_{(x,y)\to 0}\frac{|f(a+x,b+y)-f(a,b)-Df(a,b)(x,y)|}{|(x,y)|}&=\lim_{(x,y)\to 0}\frac{|f(a,b)+f(a,y)+f(x,b)+f(x,y)-f(a,b)-Df(a,b)(x,y)|}{|(x,y)|}\\
+            &=\lim_{(x,y)\to 0}\frac{|f(x,y)+[f(a,y)+f(x,b)]-Df(a,b)(x,y)|}{|(x,y)|}\\
+            &=\lim_{(x,y)\to 0}\frac{|f(x,y)|}{|(x,y)|}
+        \end{align*}
+        This limit is zero by part a, hence, $Df(a,b)(x,y)=f(a,y)+f(x,b)$.
+
+        \item Consider the case $n=m=p=1$. Let $f(x,y)=xy$. Consider vectors $x,y,z,w\in\R$, and scalar $t\in\R$. Then,
+        \begin{align*}
+            f(tx,y)&=f(x,ty)=tf(x,y)=txy\\
+            f(x,y+w)&=x(y+w)=xy+xw=f(x,y)+f(x,w)\\
+            f(x+z,y)&=(x+z)y=xy+zy=f(x,y)+f(z,y)
+        \end{align*}
+
+        So, $Df(a,b)(x,y)=f(a,y)+f(x,b)=ay+xb$, which is the formula in Theorem 2-3 from Spivak.
+    \end{enumerate}
+\end{document}

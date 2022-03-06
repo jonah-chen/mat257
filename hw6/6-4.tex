@@ -1,0 +1,51 @@
+\documentclass{exam}
+\title{MAT257 PSET 6---Question 4}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    For any vector $x\in\R^k\times\R^n$ define $x_X:=\begin{pmatrix}
+        x_1&\dots&x_k
+    \end{pmatrix}\in\R^k$ and $x_Y=\begin{pmatrix}
+        x_{k+1}&\dots&x_{k+n}
+    \end{pmatrix}\in\R^n$. 
+    
+    Then, $f(a)=f(a_X,a_Y)=0$. WLOG, assume $\partialderivative{f}{a_Y}$ has rank $n$ hence invertible (the choice of at least one set of $n$ coordinates for $a_Y$ must make this true as $f'(a)$ is rank $n$). 
+    
+    Define $R:=\det\left(\partialderivative{f}{a_Y}\right)$ which is nonzero as $\partialderivative{f}{a_Y}$ is full rank. Define $g(x_X,x_Y):=(x_X,f(x_X,x_Y))$. 
+    
+    Then, $Dg(a)=\begin{pmatrix}
+        I_{k\times k} & 0\\
+        \partialderivative{f}{a_X}&\partialderivative{f}{a_Y}
+    \end{pmatrix}$ and hence $\det (Dg(a))=R\neq0$.
+
+    As $g$ is also $C^1$ on $\R^k\times\R^n$ because $f$ is $C^1$ on $\R^k\times\R^n$, and $\R^k\times\R^n$ contains $a$, $g$ satisfies the hypotheses of the inverse function theorem.
+    
+    Hence, $\exists$ an open set $V\ni a$ and an open set $U\ni g(a)=(a_X,0)$ such that $g:V\to U$ has a continuous inverse $g^{-1}:U\to V$. 
+    
+    As $U$ is an open set, $\exists$ an open ball $B\subset U$ of radius $r>0$ centered at $(a_X,0)$.
+
+    For any $c\in\R^n$ where $|c|<r,\, |(a_X,c)-(a_X,0)|<r$ so $(a_X,c)\in B\subset U\implies g^{-1}(a_X,c)$ exists. 
+    
+    Thus, $g(g^{-1}(a_X,c))=(a_X,c)\implies f(g^{-1}(a_X,c))=c$ by the definition of $g$ so the solution to the equation $f(x)=c$ is $$x=g^{-1}(a_X,c)$$
+    for any $c$ sufficiently close to $0$.
+\end{document}

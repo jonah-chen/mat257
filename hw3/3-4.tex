@@ -1,0 +1,94 @@
+\documentclass{exam}
+\title{MAT257 PSET 3---Question 4}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item Consider the functions $f_1:\R^3\to\R^2, f_2:\R^2\to\R, f_3:\R\to\R$ defined by
+        \begin{align*}
+            f_1(x,y,z)&=(\log x , y)
+            \\
+            f_2(a,b)&=ab\\
+            f_3(c)&=\exp(c)
+        \end{align*}
+        The derivative of $f_1$ is $f_1'=\begin{pmatrix}
+            1/x & 0 & 0\\
+            0 & 1 & 0
+        \end{pmatrix}$ by Theorem 2-3(3)
+
+        The derivative of $f_2$ is $f_2'=\begin{pmatrix}
+            b & a
+        \end{pmatrix}$ by Theorem 2-3(5)
+
+        The derivative of $f_3$ is $f_3'=\exp(c)$.
+        
+        Note that $f_3(f_2(f_1(x,y,z)))=x^y=f(x,y,z)$. By chain rule,
+        \begin{align*}
+            f'(x,y,z)&=f_3'(f_2(f_1(x,y,z)))\cdot f_2'(f_1(x,y,z))\cdot f_1'(x,y,z)\\
+            &=\begin{pmatrix}
+                \exp(y\log x)
+            \end{pmatrix}\begin{pmatrix}
+                y & \log x
+            \end{pmatrix}\begin{pmatrix}
+                1/x & 0 & 0\\
+                0 & 1 & 0
+            \end{pmatrix}=\begin{pmatrix}
+                x^{y-1}y & x^y\log x & 0
+            \end{pmatrix}
+        \end{align*}
+        \item Now, $g(x,y,z)=(x^y, z)=(f(x,y,z),z)$, where $f(x,y,z)=x^y$ whose derivative is found in part (a). By Theorem 2-3(3),
+        \begin{align*}
+            g'(x,y,z)=\begin{pmatrix}
+                f'(x,y,z)\\
+                (z)'
+            \end{pmatrix}=\begin{pmatrix}
+                x^{y-1}y & x^y\log x & 0\\
+                0 & 0 & 1
+            \end{pmatrix}
+        \end{align*}
+        \item Consider the function $k:\R^3\to\R^3$ where $
+            k=\begin{pmatrix}
+                1 & 1 & 0\\
+                0 & 0 & 1\\
+                0 & 0 & 0
+            \end{pmatrix}$
+            Then, $k'=k$ by Theorem 2-3(2) as $k$ is a linear map. 
+            
+            Note that $h_1(x,y,z)=(x+y, z, 0)$. Therefore, 
+            $h(x,y,z)=f(k(x,y,z))=(x+y)^z$. By chain rule,
+            \begin{align*}
+                h'(x,y,z)&=f'(k(x,y,z))\cdot k'(x,y,z)\\
+                &=f'(x+y,z,0)\cdot k(x,y,z)\\
+                &=\begin{pmatrix}
+                    (x+y)^{z-1}z & (x+y)^z\log(x+y) & 0
+                \end{pmatrix}\begin{pmatrix}
+                    1 & 1 & 0\\
+                0 & 0 & 1\\
+                0 & 0 & 0
+                \end{pmatrix}\\
+                &=\begin{pmatrix}
+                    (x+y)^{z-1}z &  (x+y)^{z-1}z & (x+y)^z\log(x+y)
+                \end{pmatrix}
+            \end{align*} 
+    \end{enumerate}
+\end{document}

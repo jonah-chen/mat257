@@ -1,0 +1,31 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 4}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\sffamily
+\begin{align*}
+    |x+y|^2&=\langle x+y,x+y\rangle\\
+    &=\langle x,x\rangle+\langle y,y\rangle+2\langle x,y\rangle\\
+    &=|x|^2+|y|^2+2\langle x,y\rangle\\
+    &=|x|^2+|y|^2
+\end{align*}
+\end{document}

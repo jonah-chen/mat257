@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \begin{enumerate}[label=(\alph*)]
+        \item We will first show $\langle Tx,Ty\rangle=\langle x,y\rangle\implies|Tx|=|x|$
+        \begin{align*}
+            |Tx|^2&=\langle Tx, Tx\rangle = \langle x,x\rangle = |x|^2\\
+            |Tx|&=|x|
+        \end{align*}
+        Then, we will show $|Tx|=|x|\implies\langle Tx,Ty\rangle=\langle x,y\rangle$.
+        \begin{align*}
+            |T(x+y)|&=|x+y|\\
+            |T(x+y)|^2&=|x+y|^2\\
+            \langle Tx+Ty,Tx+Ty\rangle &=\langle x+y,x+y\rangle\\
+            \langle Tx,Tx\rangle + \langle Ty,Ty\rangle + 2\langle Tx,Ty\rangle&=\langle x,x\rangle+\langle y,y\rangle+2\langle x,y\rangle\\
+            |Tx|^2+|Ty|^2+2\langle Tx,Ty\rangle&=|x|^2+|y|^2+2\langle x,y\rangle\\
+            \langle Tx,Ty\rangle &= \langle x,y\rangle
+        \end{align*}
+        Hence, $\langle Tx,Ty\rangle=\langle x,y\rangle\iff|Tx|=|x|$
+        \item If $|Tx|=|x|$, $|Tx|=0\iff |x|=0$. Since the norm is positive definite, $Tx=0\iff x=0$. As $T$ is a linear transformation from $\R^n\to\R^n$ and $\ker T=\{0\}$, $T$ must be invertible hence it must be 1-1 and onto.
+        
+        As $T$ is norm preserving and $TT^{-1}=1$, $|T(T^{-1}x)|=|T^{-1}x|=|x|$.
+    \end{enumerate}
+\end{document}

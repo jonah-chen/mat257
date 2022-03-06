@@ -1,0 +1,42 @@
+\documentclass{exam}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    Let $f=\mathbf 1_A$
+
+    \begin{itemize}
+        \item     For any $\delta>0$, consider the point $a=\left(u,\frac{u^2}{2}\right)$ where $u>0$ is selected such that $\delta=2\sqrt{u^2+\frac{u^4}{4}}$ so that $|a|<\delta$. 
+    
+        $f(a)=1$, thus, for $\epsilon=1$, there does not exist any $\delta>0$ where $|(x,y)|<\delta\implies |f(x,y)-f(0,0)|<\epsilon$. Hence, $f$ is not continuous at $(0,0)$.
+        \item If the domain was restricted to any line $D=\{(\alpha t, \beta t):\alpha,\beta,t\in\R\}$. WLOG, assume $\alpha^2+\beta^2=1$. 
+    
+        If $\alpha\neq 0$, choose $\delta=\frac{\beta}{\alpha^2}$. Then, $|(\alpha t,\beta t)|<\delta\implies |t|<\delta=\frac{\beta}{\alpha^2}\implies\beta t>(\alpha t)^2\implies f(\alpha t,\beta t)=0=f(0,0)$.
+        
+        If $\alpha=0$, $f(0,\beta t)=0$, and it is known that a constant function is continuous. 
+
+        Thus, the restriction of $f$ to any line $x=\alpha t, y=\beta t$ [which crosses $(0,0)$] is continuous at $(0,0)$.  
+    \end{itemize}
+
+
+    
+\end{document}

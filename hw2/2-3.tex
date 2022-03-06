@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    Note the following:
+    \begin{enumerate}
+        \item As $C$ is compact, $C$ is bounded; thus $\exists r$ s.t. the closed ball of radius $r$ centered at the origin contains $C$. 
+        \item As $U$ is open, $U^C$ is closed. As $C\subset U$, $C\cap U^C=\emptyset$. Given what was shown in $2b$, there exists $d>0$ such that $|y-x|\geq d$ for all $x\in U^C$ and $y\in C$.  
+    \end{enumerate}
+
+    Consider the set $$S=\bigcup_{x\in U^C}\{y:|y-x|<\frac{d}{2}\}$$ Note that 
+    \begin{itemize}
+        \item $S$ is clearly open as it is a union of open balls, thus $S^C$ is closed.
+        \item Every point in $U^C$ is contained in $S$ since $\frac{d}{2}>0$. Hence, $S^C\subset U$.
+        \item No point in $C$ is contained in $S$ because [2.]. Thus, $C\subset S^C$.  
+    \end{itemize}
+    
+    
+    Now, let $B=\{x:|x|\leq r+1\}$ and consider the set $D=S^C\cap B$. Note that $D$ is bounded because it is contained in the ball of radius $r+1$ centered at the origin, and $D$ is closed as it is the intersection of two closed sets $S^C$ and $B$. Thus, $D$ is compact.
+    
+    Also, $D\subset U$ as $S^C\subset U$.
+
+    Finally, to show $\mathrm{int} D\supset C$, we must show $\forall c\in C$, there is an open ball $Y$ about $c$ s.t. $y\subset D$. This can be done by showing all points in the open ball $Y$ of radius $q=\min\{\frac{d}{2}, 1\}$ centered at $c$ is contained in $B$ and not contained in $S$.
+    \begin{itemize}
+        \item As $c$ is contained in the closed ball of radius $r$, a open ball of radius $q\leq 1$ about any point in $C$ is contained in a closed ball of radius $r+1$.
+        \item For any $p\in Y$ and any $x\in U^C$, we must have $|p-c|<\frac{d}{2}$ and $|x-c|\geq d$ as $c\in C$ by [2.]. By triangle inequality, $|x-c|\leq|x-p|+|p-c|\implies|x-c|-|p-c|\leq|x-p|\implies|x-p|>\frac{d}{2}$. 
+        
+        If $p\in S$, $|x-p|<\frac{d}{2}$ for some $x\in U^C$. However, $|x-p|>\frac{d}{2}$, thus $p\notin S$.
+    \end{itemize}
+\end{document}

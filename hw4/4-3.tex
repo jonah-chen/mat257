@@ -1,0 +1,36 @@
+\documentclass{exam}
+\title{MAT257 PSET 4---Question 3}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item Note that the integral of $g_1$ does not depend on the second variable $y$. Therefore, applying the single variable fundamental theorem of calculus on $D_2f(x,y)=\partial_y\int_0^yg_2(x,t)\dd t=g_2(x,y)$
+        \item Currently, $D_1f(x,y)=g_1(x,0)$ by the single variable fundamental theorem of calculus. Changing $f$ so that 
+        \begin{align*}
+            f(x,y)=\int_0^xg_1(t,y)\dd t+\int_0^yg_2(x,t)\dd t
+        \end{align*}
+        will change $D_1f(x,y)$ to $g_1(x,y)$.
+        \item $f_d(x,y)=\frac{x^2+y^2}{2}$
+        \item $f_c(x,y)=xy$
+    \end{enumerate}
+\end{document}

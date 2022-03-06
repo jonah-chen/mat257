@@ -1,0 +1,46 @@
+\documentclass{exam}
+\title{MAT257 PSET 10---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Consider the linear transformation \(G=\begin{pmatrix}
+    1 & 0 & -1 \\
+    2 & 1 & 1 \\
+    3 & 2 & 1
+    \end{pmatrix}\). Then, \(G([0,1]^3)=T\). As \(G\) is a linear transformation, \(G\) is \(C^1\) and \(G'=G\) so \(\det(G')=\det(G)=-2,\) which is never zero. As \(T\)'s boundary is content zero, we can integrate over \((0,1)^3\) to get the same answer.
+    
+    Note that \(f(x,y,z)=x+2y-z\) is the linear transformation from \(F:\R^3\to\R\) where \(F=\begin{pmatrix}
+        1 & 2 & -1
+    \end{pmatrix}\). Then, \(F\circ G=\begin{pmatrix}2 & 0 & 0\end{pmatrix}\).
+    
+    Therefore, by change of variables theorem,
+    \[\int_Tx+2y-z=\int_{(0,1)^3}(F\circ G)|\det(G')|=2\int_{(0,1)^3}\begin{pmatrix}
+        2 & 0 & 0 \\
+    \end{pmatrix}\]
+
+    By fubini's theorem
+    \[2\int_{[0,1]^3}\begin{pmatrix}
+        2 & 0 & 0
+    \end{pmatrix}=2\int_0^1\dd z\int_0^1\dd y\int_0^1 2x\dd x=2\]
+\end{document}

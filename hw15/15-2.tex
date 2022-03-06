@@ -1,0 +1,77 @@
+\documentclass{exam}
+\title{MAT257 PSET 15---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+
+    \begin{lemma}
+        Let open sets \(U,V\subset\R^n\) be diffeomorphic with the diffeomorphism \(g:U\to V.\) Then, any \(k\)-form on \(U\) can be expressed as the pullback using \(g\) of some \(k\)-form on \(V\), and any \(k\)-form on \(V\) can be expressed as the pullback using \(g^{-1}\) of some \(k\)-form on \(U\).
+
+        \vspace{3pt}
+        Specifically, \(\forall\nu\in\Omega^k(V),\) then \(\nu=(g^{-1})^*\mu\) where \(\mu=g^*\nu\in\Omega^k(U),\) 
+        
+        and \(\forall\mu\in\Omega^k(U),\) then \(\mu=g^*\nu\) where \(\nu=(g^{-1})^*\mu\in\Omega^k(V)\)
+
+        \begin{proof}
+            Let \(u_1,\dots,u_k\in T_pU\) and \(v_1=g_*u_1,\dots,v_k=g_*u_k\in T_qV\) where \(p\in U\) and \(q=g(p).\)
+            \vspace{3pt}
+
+            Consider some \(\nu\in\Omega^k(V),\) then \(\nu=(g^{-1})^*\mu\) where \(\mu=g^*\nu\in\Omega^k(U).\)
+            \[\nu(v_1,\dots,v_k)=(g^{-1})^*\mu(v_1,\dots,v_k)=\mu(u_1,\dots,u_k)=g^*\nu(u_1,\dots,u_k)=\nu(v_1,\dots,v_k).\]
+
+            Similarly, consider some \(\mu\in\Omega^k(U),\) then \(\mu=g^*\nu\) where \(\nu=(g^{-1})^*\mu\in\Omega^k(V)\).
+            \[\mu(u_1,\dots,u_k)=g^*\nu(u_1,\dots,u_k)=\nu(v_1,\dots,v_k)=(g^{-1})^*\mu(v_1,\dots,v_k)=\mu(u_1,\dots,u_k).\]
+        \end{proof}
+    \end{lemma}
+
+    % On \(U\), every open closed form is exact, meaning \(\forall\omega\in\Omega^{k+1}(U), \dd \omega=0\implies\exists\lambda\in\Omega^{k}(U):\omega=\dd\lambda.\)
+
+    If there are no closed forms on \(V\), then the statement is trivial.
+
+    By lemma 1, for every closed \(k+1\) form on \(\nu\) on \(V\), there is a corresponding \(k+1\) form \(\mu=g^*\nu\) on \(U\) such that \(\nu=(g^{-1})^*\mu\).
+    \[\dd\mu=\dd(g^*\nu)=g^*(\dd\nu)=g^*(0)=0.\]
+    Hence, \(\mu\) is a closed \(k+1\) form on \(U\). Since every closed form in \(U\) is exact, then there must exist \(\eta\in\Omega^k(U):\dd\eta=\mu.\) Note that \(\lambda=(g^{-1})^*\eta\) is a $k$ form on \(V\).
+    \begin{align*}
+        \dd\eta&=\mu\\
+        (g^{-1})^*(\dd\eta)&=(g^{-1})^*\mu\\
+        \dd((g^{-1})^*\eta)&=(g^{-1})^*\mu\\
+        \dd\lambda&=\nu
+    \end{align*}
+
+    As a \(\lambda\) can be found for any closed form \(\nu\) on \(V\), then every closed form on \(V\) is also exact.
+    % We will first show that the pullback under \(g\) is a bijection between \(k\)-forms on \(U\) and \(k\)-forms on \(V\). Suppose \(\omega\) is a \(k\) form on \(U\). Let \((\xi_1,\dots,\xi_k)\) be a list of \(k\) tangent vectors on \(T_pU\) for some \(p\in U.\) Then,
+    % \begin{align*}
+    %     \omega(\xi_1,\dots,\xi_k)=((g^{-1})^*\omega)(g(\xi_1),\dots,g(\xi_k))
+    % \end{align*}
+    % Hence, for \((g^{-1})^*\omega\)
+
+    % By way of contradiction, suppose \(\exists\omega\in\Omega^{k+1}(V),\dd\omega=0\) such that for any \(\lambda\in\Omega^k(V),\omega\neq\dd\lambda.\)
+    
+    % The pullback of \(\omega\) under \(g\) is \(g^*\omega\in\Omega^{k+1}(U).\) The exterior derivative of \(g^*\omega\) is \(\dd(g^*\omega)=g^*(\dd\omega)=g^*(0)=0\). Meaning, \(\exists\eta\in\Omega^k(U):g^*\omega=\dd\eta.\)
+
+    % As \(g:U\to V\) is a diffeomorphism, its inverse \(g^{-1}:V\to U\) is also a diffeomorphism.
+
+    % The pullback of the form \(\eta\) under \(g^{-1}\) is \((g^{-1})^*\eta\in\Omega^{k}(V).\) 
+\end{document}

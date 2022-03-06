@@ -1,0 +1,60 @@
+\documentclass{exam}
+\title{MAT257 PSET 6---Question 2}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item Consider functions $F:\R^3\to\R^2, E:U\to\R^2$ s.t. $F=(G,H), E=(g,h)$ and $U\subset\R$ is an open set containing $-1$.
+        
+        Then, $F(2,-1,1)=0$ and $E(-1)=(2,1)$. 
+        
+        $F$ is $C^1$ since $G$ and $H$ are $C^1$. So, for the implicit function theorem to guarantee the existance of $E$ (hence guarantee the existance of $g$ and $h$ in $U$), it is also required that $\partialderivative{F}{(x,u)}$ to be invertible at $(2,-1,1)$.
+
+        \begin{align*}
+            \det\left(\partialderivative{F}{(x,u)}\left(2,-1,1\right)\right)&=\det\begin{pmatrix}
+                \pi_1f'&2u\\u&3u^2+x
+            \end{pmatrix}=\det\begin{pmatrix}
+                \pi_1f'(2,-1) & 2\cdot1\\1&3\cdot1^2+2
+            \end{pmatrix}=5\pi_1f'(2,-1)-2\neq0
+        \end{align*}
+
+        Thus, $\pi_1f'(2,-1)\neq\frac{2}{5}$ must be true to ensure the existance of $g$ and $h$ on an open set $U$ about $y=-1$.
+        
+        \item As the implicit function theorem applies, 
+        \begin{align*}
+            E'=-\left(\partialderivative{F}{(x,u)}\right)^{-1}\partialderivative{F}{y}=-\begin{pmatrix}
+                \pi_1f'&2u\\u&3u^2+x
+            \end{pmatrix}^{-1}\begin{pmatrix}
+                \pi_2f'\\9y^2
+            \end{pmatrix}\\
+            E'(g(-1),-1,h(-1))=E'(2,-1,1)=-\begin{pmatrix}
+                1&2\\1&5
+            \end{pmatrix}^{-1}\begin{pmatrix}
+                -3\\9
+            \end{pmatrix}=\begin{pmatrix}
+                11\\-4
+            \end{pmatrix}
+        \end{align*}
+        Recalling the definition of $E$, $g'(-1)=11$ amd $h'(-1)=-4$.
+    \end{enumerate}
+\end{document}

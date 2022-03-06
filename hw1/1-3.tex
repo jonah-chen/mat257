@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 3}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\sffamily
+\noindent First, we show $T$ is linear. For any $x,y,z\in\R^n$ and $a,b\in\R$,
+\begin{align*}
+    [T(ax+by)]z=\langle ax+by,z\rangle=a\langle x,z\rangle+b\langle y,z\rangle=[aT(x)+bT(y)]z
+\end{align*}
+Next, by way of contradiction assume $\exists x,y\in\R^n, x\neq y:Tx=Ty$.
+\begin{align*}
+    \implies\forall z\in\R^n, \langle x,z\rangle=\langle y,z\rangle.
+\end{align*}
+Choose n vectors to be $z$. The standard basis vectors $e_1,\dots,e_n$.
+\begin{align*}
+    \langle x,e_i\rangle&=x_i, \langle y,e_i\rangle=y_i\\
+    \implies \forall i&=1,\dots,n, x_i=y_i\\
+    &\therefore x=y
+\end{align*}
+This is a contradiction thus $T$ is one-to-one. For linear transformations from $\R^n$ to $\R^n$, injective, surjective, and bijective are equivalent.
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 2}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    Given an integrable function $f:A\to\R$, any partition $P$ of $A$, and any subrectangle $S\in P$, and some $\varepsilon>0$. 
+    
+    Let $P'$ be a partition of $A$ where $U(f,P')-L(f,P')<\varepsilon$. 
+    
+    Let $Q$ be the refinement of $P$ and $P'$ and $Q'=\{R\in Q:R\subset S\}\subset Q$ be a partition of $S$. As $P$ is used to refine $Q$,
+    \begin{align*}
+        \sum_{R\in Q'}v(R)=v(S)
+    \end{align*}
+    
+    Then, $U(f,Q)-L(f,Q)\leq U(f,P')-L(f,P')<\frac{\varepsilon}{v(S)}$.
+    \begin{align*}
+        \varepsilon>U(f,Q)-L(f,Q)&=\sum_{R\in Q}v(R)[M_R(f)-m_R(f)]\geq\sum_{R\in Q'}v(R)[M_R(f)-m_R(f)]=U(f|_S,Q')-L(f|_S,Q')\\
+    \end{align*}
+    Hence, $f|_S$ is integrable on $S$.
+
+    To prove the other direction, for any partition $P$ of $A$ and $f|_S$ is integrable for any subrectangle $S\in P$. Meaning there is some partition $P_S$ of each subrectangle and $\varepsilon>0$ where $U(f|_S,P_S)-L(f|_S,P_S)<\varepsilon/v(S)$. 
+
+    Let $P'$ be a partition of $A$ that is the refinement of all $\{P_S:S\in P\}$. Then,$$U(f|_S,P')-L(f|_S,P')\leq U(f|_S,P_S)-L(f|_S,P_S)<\varepsilon \frac{v(S)}{v(R)}$$.
+    As $P'$ refines all $P_S$, each rectangle of $P'$ is contained in a rectangle of some partition $P_S$. So, 
+    \begin{align*}
+        U(f,P')-L(f,P')&=\sum_{R\in P'}v(R)[M_R(f)-m_R(f)]\\
+        &=\sum_{S\in P}\sum_{R\in P_S}v(R)[M_R(f)-m_R(f)]\\&
+        \leq\sum_{S\in P}U(f|_S,P_S)-L(f|_S,P_S)\\
+        &\leq\sum_{S\in P}\varepsilon\frac{v(S)}{v(R)}=\varepsilon
+    \end{align*}
+
+    Hence, $f$ is integrable on $A$.
+
+
+    Given that $P'$ refines all of $P_S$, then
+    $$\sum_{S\in P}\int_Sf|_S=\sum_{S\in P}\sup_{P_S} L(f|_S,P_S)\leq\sup_{P'} L(f,P')\leq\inf_{P'} U(f,P')\leq\sum_{S\in P}\inf_{P_S} U(f|_S,P_S)=\sum_{S\in P}\int_Sf|_S$$
+
+    So, $\sup_{P'} L(f,P')=\inf_{P'} U(f,P')=\int_Af=\sum_{S\in P}\int_Sf|_S$.
+\end{document}

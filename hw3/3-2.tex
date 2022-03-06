@@ -1,0 +1,46 @@
+\documentclass{exam}
+\title{MAT257 PSET 3---Question 2}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item First consider when $t\geq 0$. $h(t)=f(tx)=|tx|g(tx/|tx|)=txg(x/|x|)=tf(x)$. 
+        
+        Next, consider when $t<0$. $h(t)=f(tx)=|tx|g(tx/|tx|)=-t|x|g(-x/|x|)=t|x|g(x/|x|)=tf(x)$, as $g(y)=g(-y)$.
+
+        Thus, $\forall t, h(t)=tf(x)$. As $f(x)$ is independent of $t$, $h$ is differentiable and $h'(t)=f(x)$.
+        \item Firstly, note that $f(0)=0$ by definition. We will show the countrapositive case. If $g$ is nonzero, then $f$ is not differentiable at $(0,0)$. 
+        
+        Given $g$ is nonzero, $\exists a\in S^1, b\neq 0:g(a)=b$. Wwe also know that $g(0,1)=g(1,0)=g(0,-1)=g(-1,0)=0$ as $g(-x)=-g(x)$. Thus, $a$ cannot be any of these four points. 
+
+        Consider the line passing through the origin and $a$. Then, $f$ restricted to that line is $f(ta)=|t|g(ta/|ta|)=tg(a)=tb$. Also consider the line passing through the origin and the point $0,1$ that is given by $f(t(0,1))=|t|g((0,1)/|(0,1)|)=0$. As $f$ is a constant function when restricted to the line passing through the origin and $(0,1)$, $f'(0,0)$ must be 0 if it exists. Assuming the derivative exists,
+        \begin{align*}
+            \lim_{h\to 0}\frac{|f(h)-0h|}{|h|}=0\implies\lim_{t\to 0}\frac{|f(ta)|}{|ta|}=0
+        \end{align*}
+        However, we know that $f(ta)=tb$ and $|a|=1$. Therefore,
+        \begin{align*}
+            \lim_{t\to 0}\frac{|f(ta)|}{|ta|}=\lim_{t\to 0}\frac{|tb|}{|t|}=|b|
+        \end{align*}
+        As $b$ is defined as being nonzero, this cannot be true. Thus, the derivative must not exist at $(0,0)$ unless $g(a)$ is identically $0$. In that case, $f(x)=|x|\cdot 0=0$, which is a constant function. Therefore, $f'(0,0)=0$ when $g=0$.
+    \end{enumerate}
+\end{document}

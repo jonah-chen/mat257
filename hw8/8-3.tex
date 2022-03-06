@@ -1,0 +1,38 @@
+\documentclass{exam}
+\title{MAT257 PSET 8---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    As $f:[a,b]\times[c,d]\to\R$ is continuous and $D_2f$ is continuous and hence integrable, by the 1D fundamental theorem of calculus, 
+    \begin{align*}
+        f(x,y)=f(x,c)+\int_c^yD_2f(x,t)\dd t
+    \end{align*}
+    Define $\alpha=\int_a^bf(x,c)\dd x$ and $g(t)=\int_a^bD_2f(x,t)\dd x$. Then, by Fubini's theorem,
+    \begin{align*}
+        F(y)=\alpha+\int_a^b\int_c^yD_2f(x,t)\dd t\dd x=\alpha+\int_c^y\int_a^bD_2f(x,t)\dd x\dd t=\alpha+\int_c^yg(t)\dd t
+    \end{align*}
+    By the 1D fundamental theorem of calculus,
+    \begin{align*}
+        F'(y)=g(y)=\int_a^bD_2f(x,y)\dd x
+    \end{align*}
+\end{document}

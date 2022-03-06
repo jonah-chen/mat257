@@ -1,0 +1,52 @@
+\documentclass{exam}
+\title{MAT257 PSET 8---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    Given $f:A\to\R$ where $A\subset\R^n$. By way of contradiction, suppose $D_2(D_1f)\neq D_1(D_2f)$ for some $x\in A$. 
+    
+    WLOG, assume $D_1(D_2f(a))>D_2(D_1f(a))$. Let $$g(x)=D_1(D_2f(x))-D_2(D_1f(x))$$
+    Clearly, $g(a)>0$. Let the open interval $K=(\,g(a)/2,2g(a)\,)$. As both partial derivatives are continuous hence $g$ is continuous, $g^{-1}(K)\ni a$ is an open set in $A$. 
+    
+    For some $a_i<b_i$, let $R:=[a_1,b_1]\times[a_2,b_2]\times\dots\times[a_n,b_n]\subset g^{-1}(K)$ be a closed rectangle and define $R':=[a_3,b_3]\times\dots\times[a_n,b_n]$.
+    
+    Clearly, $x\in R\implies g(x)>0$. As $g$ is continuous and integrable, and both partial derivatives are continuous and differentiable,
+    \begin{align*}
+        \int_Rg=\int_{[a_1,b_1]\times[a_2,b_2]\times R'}D_{1}(D_2f)-\int_{[a_1,b_1]\times[a_2,b_2]\times R'}D_2(D_1f)>0
+    \end{align*}
+    Fubini's theorem states that
+    \begin{align*}
+        \int_RD_1(D_2f)&=\int_{R'}\left(\int_{[a_2,b_2]}\left(\int_{[a_1,b_1]}D_1(D_2f)\right)\right)\\
+        \int_RD_2(D_1f)&=\int_{R'}\left(\int_{[a_1,b_1]}\left(\int_{[a_2,b_2]}D_2(D_1f)\right)\right)
+    \end{align*}
+    Define $h:[a_3,b_3]\times\dots\times[a_n,b_n]\to\R$ where $h(x)=f(b_1,b_2,x_3,\dots,x_n)-f(a_1,a_2,x_3,\dots,x_n)$. By the 1-dimensional fundamental theorem of calculus,
+    \begin{align*}
+        \int_RD_1(D_2f)&=\int_{R'}\left(\int_{[a_2,b_2]}\left(\int_{[a_1,b_1]}D_1(D_2f)\right)\right)=\int_{R'}h\\
+        \int_RD_2(D_1f)&=\int_{R'}\left(\int_{[a_1,b_1]}\left(\int_{[a_2,b_2]}D_2(D_1f)\right)\right)=\int_{R'}h
+    \end{align*}
+    Then, 
+    \begin{align*}
+        \int_Rg=\int_{R'}h-\int_{R'}h=0
+    \end{align*}
+    However, $\int_Rg>0$. This is a contradiction hence $D_2(D_1f)=D_1(D_2f)$.
+\end{document}

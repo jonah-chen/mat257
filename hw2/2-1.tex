@@ -1,0 +1,54 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \begin{align*}
+        \mathrm{int}A_1&=\{x\in\R^n:|x|<1\}\\
+        \mathrm{ext}A_1&=\{x\in\R^n:|x|>1\}\\
+        \mathrm{bd}A_1&=\{x\in\R^n:|x|=1\}
+    \end{align*}
+    Consider a point $x\in\mathrm{int}A_1$. $\exists$ open ball $B=\{x\in\R^n:|x|<1\}$ of radius 1 centered at the origin where $x\in B\subset A_1$. 
+    
+    Consider a point $x\in\mathrm{ext}A_1$. Choose an open ball $B$ of radius $\frac{1}{2}(|x|-1)$ centered at $x$. For any $y\in B$, by triangle inequality, $|x|\leq|x-y|+|y|\implies |y|\geq|x|-|x-y|=\frac{1}{2}|x|+\frac{1}{2}$. As $|x|>1$, $|y|>1$. Thus, $B\subset\mathrm{ext}A_1\subset A^C$. 
+
+    Consider a point $x\in\mathrm{bd}A_1$ and any open ball $B$ of radius $2r$ centered about the point. WLOG, take $2r<1$. Then, the points $a=(1-r)x$ and $b=(1+r)x$ are contained in $B$ as $|a-x|=|(1-r)x-x|=r<2r, |b-x|=|(1+r)x-x|=r<2r$. However, $a\in A_1$ as $|a|=1-r$ but $b\in A_1^C$ as $|b|=1+r$. Thus, $x$ is on the boundary of $A_1$.
+
+    \begin{align*}
+        \mathrm{int}A_2&=\emptyset\\
+        \mathrm{ext}A_2&=\{x\in\R^n:|x|\neq 1\}\\
+        \mathrm{bd}A_2 &=\{x\in\R^n:|x|=1\}
+    \end{align*}
+
+    Take any open ball $B\subset\R^n$ of radius $2r$ centered at $y$. Then, let $d=\frac{r}{|y|}$. The points $a=(1-d)y$ and $b=(1+d)y$ are contained in $B$ as $|a-y|=|(1-d)y-y|=|d||y|=r$ and $|b-y|=|(1+d)y-y|=|d||y|=r$, but $|a|=|y|-r, |b|=|y|+r$. Thus, for any open there are points with different norms, so, there is no open ball that is contained in $A_2$. Hence, $\mathrm{int}A_2$ is empty.
+
+    Finding the boundary of $A_2$ involves the same as the proof for the boundary of $A_1$.
+    
+    As $\mathrm{int}A_2\cup\mathrm{bd}A_2\cup\mathrm{ext}A_2=\R^n$, $\mathrm{ext}A_2=\R^n\setminus(\mathrm{int}A_2\cup\mathrm{bd}A_2)$.
+
+    \begin{align*}
+        \mathrm{int}A_3&=\emptyset\\
+        \mathrm{ext}A_3&=\emptyset\\
+        \mathrm{bd}A_3 &=\R^n
+    \end{align*}
+    Since $\mathbb Q^n$ is dense in $\R^n$, any open rectangle in $\R^n$ will contain points in $A_3$ and $A_3^C$. Thus, there are no points in the interior or exterior of $A_3$, and the boundary of $A_3$ is the full set $\R^n$.  
+\end{document}

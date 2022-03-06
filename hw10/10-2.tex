@@ -1,0 +1,51 @@
+\documentclass{exam}
+\title{MAT257 PSET 10---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{lemma}
+        If \(A\subset B\subset\R^n\), and a function \(f:B\to\R\) where \(f\geq0\) is integrable on \(A\) and \(B\) then \(\int_Bf=b,\int_Af=a.\) Then, \(b\geq a.\)
+        \begin{proof}
+            Let \((\mathcal U,\Phi)\) be an admissible open cover and partition of unity for \(A.\) Then, as \(A\) is integrable, then \(\sum_{\varphi\in\Phi}\int\varphi f\) converges absolutely to \(a.\)
+            
+            \vspace{10pt}
+
+            As \(A\subset B,\) there is some open cover of \(B,\) \(\mathcal V=\mathcal U\cup\mathcal W\) where \(\mathcal W\) is an open cover of \(B\setminus A\). Let \(\Psi\) be a partition of unity for \(B\setminus A\) subordinate to \(\mathcal W.\) Similarly, \(\chi:=\Phi\cup\Psi\) is a partiton of unity for \(B\) subordinate to \(\mathcal V.\)
+
+            \vspace{10pt}
+
+            Note that as \(f\geq0\), \(\sum_{\psi\in\Psi}\int\psi f\geq 0\). Then, as \(f\) is also integrable on \(B,\sum_{\beta\in\chi}\int\beta f\) converges absolutely to \(b.\)  This sum can be rewritten as \(b=\sum_{\phi\in\Phi}\int\phi f+\sum_{\psi\in\Psi}\int_B\psi f\geq\sum_{\phi\in\Phi}\int\phi f=a.\)
+        \end{proof} 
+    \end{lemma}
+    Let the coordinate transformation $g(r,\theta)=(r\cos\theta,r\sin\theta)$. Let $V_1=(0,1)\times(0,2\pi)$ and $V_2=(1,\infty)\times(0,2\pi)$. Then, \(g(V_1)=U_1\) and \(g(V_2)=U_2\). Also, \(\det(g')=r\), which is nonzero for any \(x\in U_1\) or \(x\in U_2\). Note that \(|\det(g')|=\det(g')\) as \(r>0\) for any \(x\in U_1\) or \(x\in U_2\). Also, \(f\circ g=\frac{1}{r^2}.\) Then, suppose these integrals exist and have a value of
+    \[I_1\equiv\int_{U_1}f=\int_{V_1}(f\circ g)|\det g'|=\int_{V_1}\frac{1}{r}\]
+    \[I_2\equiv\int_{U_2}f=\int_{V_2}(f\circ g)|\det g'|=\int_{V_2}\frac{1}{r}\]
+    Let \(W_n:=(2^{-n},1)\subset V_1.\) As all \(W_n\) are jordan measureable and \(f\) is bounded on all \(W_n.\) Then, we can use Fubini's theorem to integrate on the closure of \(W_n\) to obtain the same result:
+    \[I_1\equiv\int_{V_1}f\geq\int_{W_n}f=\int_{\overline{W_n}}f=\int_0^{2\pi}\dd\theta\int_{2^{-n}}^1\dd r\frac{1}{r}=2\pi n\log 2\text{ for any }n.\]
+    However, for \(n=1+\left\lceil\frac{I_1}{2\pi\log 2}\right\rceil,\) this inequality is false. Hence, \(I_1\) cannot exist.
+
+    Now, let \(W_n:=(1,2^n)\subset V_2.\) As all \(W_n\) are jordan measurable and \(f\) is bounded on all \(W_n\). Then, we can use Fubini's theorem to integrate on the closure of \(W_n\) to obtain the same result:
+    \[I_2\equiv\int_{V_2}f\geq\int_{W_n}f=\int_{\overline{W_n}}f=\int_0^{2\pi}\dd\theta\int_{1}^{2^n}\dd r\frac{1}{r}=2\pi n\log 2 \text{ for any }n.\]
+    However, for \(n=1+\left\lceil\frac{I_2}{2\pi\log 2}\right\rceil,\) this inequality is false. Hence, \(I_2\) cannot exist.
+\end{document}

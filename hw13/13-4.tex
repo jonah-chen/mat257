@@ -1,0 +1,90 @@
+\documentclass{exam}
+\title{MAT257 PSET 13---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    For convinence, we will sum over repeated multi-indices in the same term.
+
+    \begin{enumerate}[label=\alph*)]
+        \item As the basis for \(V^*\) is already given, we can easily make a basis for \(\Lambda^k(V)\) as \(\{I\in\underline{n}_a^k: \varphi_I\}\), where $\underline{n}_a^k$ is the set of ascending multi-index of length $k$.
+        
+        We define \(I'\in\underline{n}_a^{n-k}, I':=\underline{n}\setminus I\), where $\underline{n}=\{1,\ldots,n\}$. 
+        
+        For \(I=\{i_1,\dots,i_k\},J=\{j_1,\dots,j_k\}\in\underline{n}_a^{k}\), define \(I+J=:\{i_1,\dots,i_k,j_1,\dots,j_k\}\).
+
+        For \(I\in \underline{n}^k\), and let \(\tau_I\in S_n\) be the permutation where \(\tau_I\underline{n}=I\), define \((-1)^{I}=(-1)^{\tau_I}=(-1)^{\tau_I^{-1}}\).
+
+        For any \(\lambda,\eta\in\Lambda^k(V)\) written in the basis \(\lambda=a_I\omega_I,\eta=b_J\omega_J\) and \(a,b\in\R\), we define the hodge star operator to be linear, so \[
+        \star(a\lambda+b\eta)=a\star\lambda+b\star\eta.
+        \]
+        Thus, defining this operator on the basis vectors is sufficient. \[
+            \star\omega_I=(-1)^{I+I'}\omega_{I'}.
+        \]
+        Note that for another basis vector, \(I\neq J\) i.e. \(I\cap J'\neq\emptyset\)\[
+            \implies\omega_I\wedge\star\omega_J=(-1)^{J+J'}\omega_I\wedge\omega_{J'}=0
+        \]
+        Also,\[
+            \omega_I\wedge\star\omega_I=(-1)^{I+I'}\omega_I\wedge\omega_{I'}=(-1)^{I+I'}\omega_{I+I'}=\omega_n
+        \]
+        So, we know that \(\omega_I\wedge\star\omega_J=\delta_{IJ}\omega_n\). Also, for \(a_I,b_J\in\R\) then due to the bilinearity property of the inner product, \(\langle a_I\omega_I,b_J\omega_J\rangle=a_Ib_J\delta_{IJ}\)
+
+        Now, we show that the hodge star operator satisfies
+        \begin{align*}
+            \lambda\wedge(\star\eta)&=a_I\omega_I\wedge b_J\omega_J\\
+            &=a_Ib_J(\omega_I\wedge\omega_J)\\
+            &=a_Ib_J\delta_{IJ}\omega_n\\
+            &=\langle\lambda,\eta\rangle\omega_n.
+        \end{align*}
+        
+        As the operator is defined as linear, and both \(\Lambda^{k}(V)\) and \(\Lambda^{n-k}(V)\) have the same dimension because \(\begin{pmatrix}
+            n\\k
+        \end{pmatrix}=\begin{pmatrix}
+            n\\n-k
+        \end{pmatrix}\).
+        Using the basis vectors \(\{\omega_I\}_{I\in\underline{n}_a^k}\) for \(\Lambda^k(V)\) and $\{\star\omega_I\}_{I\in \underline{n}_a^k}$ for \(\Lambda^{n-k}(V)\). Then the matrix representing the hodge star operator is the identity matrix, which means it is invertiable. Hence, the hodge star operator is invertible.
+
+        \item Using the previous definition, for $n=3,k=1$, \(\star\omega_1=\omega_{23},\star\omega_2=-\omega_{13},\star\omega_3=\omega_{12}\). 
+        
+        For $n=4,k=2$, \(\star\omega_{12}=\omega_{34},\star\omega_{13}=-\omega_{24},\star\omega_{14}=\omega_{23},\star\omega_{23}=\omega_{14},\star\omega_{24}=-\omega_{13},\star\omega_{34}=\omega_{12}\).
+
+        \item Given some alternating tensor \(\lambda\in\Lambda^k(V)\) and \(\lambda=a_I\omega_I\)\begin{align*}
+            \star(\star\lambda)&=a_I\star(\star\omega_I)\\
+            &=(-1)^{I+I'}a_I\star(\omega_{I'})\\
+            &=(-1)^{I'+I}(-1)^{I+I'}a_I\omega_I\\
+            &=(-1)^{I'+I}(-1)^{I+I'}\lambda.
+        \end{align*}
+
+        Define the permutation \(\tau_j\in S_n\) such that \(\tau_j\{a_1,\dots,a_n\}=\{a_1,\dots,a_{j-1},a_{j+1},a_j,\dots,a_n\}\). It is obvious that \((-1)^{\tau_j}=-1\).
+
+        We can calculate the sign of $I'+I$ in terms of the sign of $I+I'$. As $I$ has length $k$ and $I'$ has length $n-k$, for element number $k+1,\dots,k+n$, making $k$ swaps between consecutive elements to position $1,\dots,k$ will convert $I+I'$ to $I'+I$. Performing the inverse operation require the same number of swaps.
+
+        This is done by the permutation \((\tau_k\tau_{k-1}\dots\tau_1)(\tau_{k+1}\tau_k\dots\tau_2)\dots(\tau_{n-1}\dots\tau_{n-k})\).
+        The number of elements to swap is $n-k$, and $k$ swaps per element hence $k(n-k)$ swaps are required to swap $I+I'$ to $I'+I$. Thus,
+        \begin{align*}
+            \star(\star\lambda)=(-1)^{I'+I}(-1)^{I+I'}\lambda=((-1)^{I'+I})^2(-1)^{k(n-k)}(\lambda)=(-1)^{k(n-k)}(\lambda).
+        \end{align*}
+        Hence, \(\star\circ\star=(-1)^{k(n-k)}\mathbbm 1\).
+    \end{enumerate}
+\end{document}

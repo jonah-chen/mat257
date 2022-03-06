@@ -1,0 +1,51 @@
+\documentclass{exam}
+\title{MAT257 PSET 5---Question 2}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{lemma}
+        If $f:\R^2\to\R$ is continuously differentiable, then $g(t)=f(t,t^k)$ is continuous for $k>1$. 
+
+        \begin{proof}
+            For $g$ to be continuous, $$\forall s\in\R\forall\varepsilon>0\exists\delta>0:|t-s|<\delta\implies|g(t)-g(s)|=|f(t,t^k)-f(s,s^k)|<\varepsilon$$
+
+            As $f$ is continuous on $\R^2$, $\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)$ hence we know that $$\forall(x,y)\in\R^2\,\forall\varepsilon>0\exists\delta>0:|(x,y)-(a,b)|<\delta\implies|f(x,y)-f(a,b)|<\varepsilon$$
+
+            Consider $(a,b)=(s,s^k)$ and $(x,y)=(t,t^k)$. Then,$$s\in\R\,\forall\varepsilon>0\exists\delta>0:|(t,t^k)-(s,s^k)|<\delta\implies|f(t,t^k)-f(s,s^k)|=|g(t)-g(s)|<\varepsilon$$
+
+            
+            $|(x,y)-(a,b)|=\sqrt{(s-t)^2+(s^k-t^k)^2}\geq\sqrt{(s-t)^2}=|s-t|$. 
+            
+            $|(x,y)-(a,b)|<\delta\implies|s-t|<\delta$. As this $\delta$ exists $\forall\varepsilon>0\forall s\in\R$ because $f$ is continuous, $g$ must be continuous.
+        \end{proof}
+    \end{lemma} 
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Consider any continuously differentiable function $f:\R^2\to\R$, and two other functions $g_1, g_2:[0,1]\to\R$ such that 
+        \begin{align*}
+            g_1(t)&=f(t,t^2)\\
+            g_2(t)&=f(t,t^3)
+        \end{align*}
+        Note that $g_1(0)=g_2(0)=f(0,0)$ and $g_1(1)=g_2(1)=f(1,1)$. As $f$ is continuous on $\R^2$, $g_1$ and $g_2$ must be continuous due to Lemma 1. By intermediate value theorem, there exists $t_1\in(0,1)$ and $t_2\in(0,1)$ such that $g_1(t_1)=g_2(t_2)=\frac{f(1,1)-f(0,0)}{3}$. Therefore, both points $(t_1,t_1^2), (t_2,t_2^3)$ are mapped to $\frac{f(1,1)-f(0,0)}{3}$ so $f$ cannot be one-to-one.
+    \end{enumerate}
+\end{document}

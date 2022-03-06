@@ -1,0 +1,34 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 3}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    Let $f,g:A\to\R$ be integrable and $f\leq g$. Then, for any partition $P$ of $A$,
+    \begin{align*}
+        L(f,P)=\sum_{S\in P}v(S)m_S(f)\leq\sum_{S\in P}v(S)m_S(g)=L(g,P)\\
+        U(f,P)=\sum_{S\in P}v(S)M_S(f)\leq\sum_{S\in P}v(S)M_S(g)=U(g,P)
+    \end{align*}
+    so $\sup_PL(f,P)\leq \sup_PL(g,P)$ and $\inf_PU(f,P)\leq\inf_PU(g,P)$.
+
+    As $f$ and $g$ are both integrable, $\int_Af=\sup_PL(f,P)=\inf_PU(f,P)\leq\inf_PU(g,P)=\sup_PL(f,P)=\int_Ag$.
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass{exam}
+\title{MAT257 PSET 7---Question 5}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\sffamily
+\maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item By way of contradiction, suppose there is an unbounded set $A\subset\R^n$ that is of content zero. Then, there are finitely many closed rectangles $D_i=\prod_{j=1}^M[a_i^j,b_i^j]$ such that both $\bigcup_{i=1}^M D_i\supset A$ and $\sum_{i=1}^Mv(D_i)<1$. 
+        
+        Choose $r^2=\sum_{i=1}^N\max_{j=1,\dots,M}\{(a_i^j)^2,(b_i^j)^2\}$. Then, $B_r(0)\supset\bigcup_{i=1}^N D_i$.
+
+        However, since $A$ is unbounded $\exists\, a\in A$ where $|a|>r$ for any $r$. Then, $a\notin \bigcup_{i=1}^M D_i$ which is a contradiction. So, $A$ cannot be of content zero.
+
+        \item Consider the natural numbers $\mathbb N$. Clearly $\mathbb N$ is not of content zero because it is not bounded.
+        
+        Given $\varepsilon>0$, consider the sequence of closed rectangles $D_i=[n-\frac{\varepsilon}{2^{i+2}},n+\frac{\varepsilon}{2^{i+2}}]$. 
+        
+        The natural number $n$ is contained in $D_n$ and $\sum_{i=1}^\infty v(D_i)=\sum_{i=1}^\infty \frac{\varepsilon}{2^{k+1}}=\frac{\varepsilon}{2}<\varepsilon$. Hence, $\mathbb N$ is of measure zero but not of content zero.
+    \end{enumerate}
+\end{document}

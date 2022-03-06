@@ -1,0 +1,65 @@
+\documentclass{exam}
+\title{MAT257 PSET 13---Question 2}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=\alph*)]
+        \item Using the standard basis for \(\R^2\), \(L_1\) can be represented as a matrix \(M_1=\begin{pmatrix}
+            -1 & 0 \\
+            0 & 1
+        \end{pmatrix}\), and \(\det M_1=-1\) so \(L_1\) is orientation reversing.
+
+        \item \(L_2\) is represented as a matrix \(M_2=\begin{pmatrix}
+            0 & 1 \\
+            1 & 0
+        \end{pmatrix}\), and \(\det M_2=-1\) so \(L_2\) is orientation reversing.
+
+        \item Rotations have determinent 1, so \(L_3\) is orientation preserving.
+        \item Same as c, \(L_4\) is orientation preserving.
+        \item Using \(a+bi\to (a,b)\), the complex conjugation map can be represented as a matrix \(M_5=\begin{pmatrix}
+            1 & 0 \\
+            0 & -1
+        \end{pmatrix}\), and \(\det M_5=-1\) so \(L_5\) is orientation reversing.
+        
+        \item Using the standard basis for \(\R^3\), \(L_6\) can be represented as a matrix \(M_6=\begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 0 & 0
+        \end{pmatrix}\), and \(\det M_6=1\) so \(L_6\) is orientation preserving.
+
+        \item Using the standard basis for \(\R^n\), the matrix representing \(L_7\) is \(M_7=(-1)\mathbbm{1}_{n\times n}\), so \(\det M_7=(-1)^n\det\mathbbm 1=(-1)^n\), so \(L_6\) is orientation preserving if \(n\) is even, and orientation reversing if \(n\) is odd.
+        \item Using the standard basis for \(\R^{m+n}\), the matrix describing \(L_8\) is \(M_8=\begin{pmatrix}
+            0_{m\times n} & \mathbbm 1_{n\times n}\\
+            \mathbbm 1_{m\times m} & 0_{n\times m}
+        \end{pmatrix}\)
+
+        We can define the matrix $P_j$ which swap the $j$-th and $j+1$-th rows of a matrix. This matrix has determinant $-1$. Then,
+        \[
+            (P_{n}P_{n-1}\dots P_1)(P_{n+1}P_n\dots P_2)\dots(P_{n+m-1}\dots P_{m})M_8=\mathbbm{1}. 
+        \]
+
+        There are a total of $nm$ of these $P_j$ matrices, so \((-1)^{nm}\det M_8=\det\mathbbm 1=1, \det M_8=(-1)^{nm}\), so \(L_8\) is orientation reversing if both \(m\) and \(n\) are odd, and orientation preserving otherwise.
+    \end{enumerate}
+\end{document}

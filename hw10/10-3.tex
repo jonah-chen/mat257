@@ -1,0 +1,32 @@
+\documentclass{exam}
+\title{MAT257 PSET 10---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Let \(g(u,v)=(u/v,uv),\) and \(A=\{(u,v):1<u<\sqrt2,1<v<2\}.\) Then, \(g(A)=B\) and \(g\) has continuous partial derivatives except for \(v=0.\) Also, using mathematica \(\det(g')=2u/v\), which is nonzero except when \(u=0\). There are no points in \(A\) where either \(u\) or \(v\) is zero, hence, using the change of variables theorem,
+    \[\int_Bx^2y^3=\int_A(u/v)^2(uv)^3=\int_Au^5v.\]
+
+    As \(A\)'s boundary is a set of content zero, we can integrate over the closure of \(A,\overline A=[1,\sqrt2]\times[1,2]\) and get the same result. Then, using fubini's theorem,
+    \[\int_Bx^2y^3=\int_{\overline A}u^5v=\int_1^{\sqrt2}u^5\dd u\int_1^{2}v\dd v=\frac{7}{4}\]
+\end{document}

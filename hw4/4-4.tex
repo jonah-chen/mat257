@@ -1,0 +1,54 @@
+\documentclass{exam}
+\title{MAT257 PSET 4---Question 4}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=(\alph*)]
+        \item Note that $a+te_i=\begin{pmatrix}
+            a_1 & \dots & a_i+t & \dots & a_n
+        \end{pmatrix}$. Then, 
+        \begin{align*}
+            \lim_{t\to0}\frac{f(a+te_i)-f(a)}{t}=\lim_{t\to0}\frac{f(a_1,\dots,a_i+t,\dots,a_n)-f(a_1,\dots,a_n)}{t}=D_if(a)
+        \end{align*}
+        by definition on Spivak pp.25.
+        \item Using the definition of the directional derivative
+        \begin{align*}
+            D_{x}f(a)=\lim_{h\to0}\frac{f(a+xh)-f(a)}{h}
+        \end{align*}
+        Consider making a change of variables $k:=h/t$ for $t\neq0$ (the direction derivative with respect to the 0 vector does not make sense). Note that as $h\to 0$, $k\to 0$, and $h$ can be written as $tk$. Rewriting the limit results in 
+        \begin{align*}
+            D_{x}f(a)=\lim_{k\to0}\frac{f(a+xtk)-f(a)}{tk}=\frac{1}{t}\lim_{k\to0}\frac{f(a+xtk)-f(a)}{k}=\frac{1}{t}D_{tx}f(a)
+        \end{align*}
+        Multiplying both sides by $t$ yields $D_{tx}f(a)=tD_xf(a)$.
+        \item As $f$ is differentiable at $a$, \begin{align*}
+            \lim_{h\to0}\frac{|f(a+h)-f(a)-Df(a)h|}{|h|}=0
+        \end{align*}
+        Make the substitution $h=tx$ for nonzero vector $x$. As $h\to0,t\to0$. Then,
+        \begin{align*}
+            \lim_{t\to0}\frac{|f(a+tx)-f(a)-tDf(a)x|}{|t|}=0
+        \end{align*}
+        Rearranging the definition of the directional derivative, $\lim_{t\to0}\frac{|f(a+tx)-f(a)-tD_xf(a)|}{|t|}=0$. Since the derivative is unique, $Df(a)x=D_xf(a)$. 
+
+        Since $Df(a)$ is a linear operator, $Df(a)(x+y)=Df(a)(x)+Df(a)(y)$. So, $D_{x+y}f(a)=D_xf(a)+D_yf(a)$. 
+    \end{enumerate}
+\end{document}

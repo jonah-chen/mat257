@@ -1,0 +1,28 @@
+\documentclass{exam}
+\title{MAT257 PSET 1---Question 1}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    It was shown in problem set 1 that for any linear transformation $T:\R^n\to\R^m$, there exists a number $M$ such that $|T(h)|\leq M|h|$ for all $h\in\R^n$. 
+
+    Now, $\forall\epsilon>0\forall x\in\R^n$, choose $\delta=\frac{\epsilon}{M}$. $|x-a|<\delta\implies|T(x)-T(a)|=|T(x-a)|\leq M|x-a|<M\delta=\epsilon$. Thus, $T$ is continuous on $\R^n$.
+\end{document}

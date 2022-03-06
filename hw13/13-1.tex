@@ -1,0 +1,44 @@
+\documentclass{exam}
+\title{MAT257 PSET 13---Question 1}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    For convinence, we will sum over repeated indices in the same term from 1 to 3. Let \(\varepsilon_{ijk}\) be the levi-civita tensor.
+
+    Given the standard basis for \(\R^3, \{e_1,e_2,e_3\}\) and its dual basis \(\{\varphi_1,\varphi_2,\varphi_3\}\), we can identify a basis for \(\Lambda^1(\R^3)\): \(\{\varphi_1,\varphi_2,\varphi_3\}\) and for \(\Lambda^2(\R^3)\): \(\{k=1,2,3:\Phi_k:=\frac{1}{2}\varepsilon_{ijk}(\varphi_i\wedge\varphi_j)\}=\{\varphi_2\wedge\varphi_3,\varphi_3\wedge\varphi_1,\varphi_1\wedge\varphi_2\}\).
+
+    Using these bases, the wedge product \(\wedge:\Lambda^1(\R^3)\times\Lambda^1(\R^3)\to\Lambda^2(\R^3)\) is the cross product \(P:\R^3\times\R^3\to\R^3, P(x,y)=x\times y\).
+
+    Let \(\omega,\eta\in\Lambda^1(\R^3)\),
+    \[
+        \omega\wedge\eta = (a_i\varphi_i)\wedge(b_j\varphi_j) = a_ib_j(\varphi_i\wedge\varphi_j) = \varepsilon_{ijk}a_ib_j\Phi_k
+    \]
+    Similarly, for \(x=a_ie_i,y=b_je_j\in\R^3\), their cross product is 
+    \[
+        x\times y=(a_ie_i)\times (b_je_j) = \varepsilon_{ijk}a_ib_je_k
+    \]
+
+    As \(\{\varphi_i\}\) are the basis for \(\Lambda^1(\R^3)\) and \(\{\Phi_i\}\) are the basis for \(\Lambda^2(\R^3)\), these forms are equivalent.
+\end{document}

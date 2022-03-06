@@ -1,0 +1,59 @@
+\documentclass[a4paper]{article}
+\title{MAT257 PSET 1---Question 2}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    We can write $T$ in its matrix representation, consisting of the entries $T_{ij}$. Similarly, $h$ has its vector components $h_j$. 
+    Note that \begin{align*}
+        |h|^2=\sum_j (h_j)^2
+    \end{align*}
+    % \begin{lemma}
+    %     Given non-negative $x_1,\dots,x_n$
+    %     \begin{align*}
+    %         \left(\sum_{i=1}^nx_i\right)^2\leq\sum_{i=1}^nx_i^2
+    %     \end{align*}
+    %     \begin{proof}
+    %         Consider the partial sums $P_m:=\left(\sum_{i=1}^mx_i\right)^2, Q_m:=\sum_{i=1}^mx_i^2$.
+
+    %         It is trivial that $P_1\leq Q_1$ since $x_1^2\leq x_1^2$. 
+
+    %         For induction, assume $P_{m}\leq Q_m$. Then, we need to show
+    %         \begin{align*}
+    %             P_{m+1}&\leq Q_{m+1}\\
+    %             (\sqrt{P_m}+x_{m+1})^2&\leq Q_m+x_{m+1}^2\\
+    %             P_m+\sqrt{P_m}x_{m+1}+x_{m+1}^2&\leq Q_m+x_{m+1}^2\\
+    %             P_m\leq P_m+\sqrt{P_m}x_{m+1}&\leq Q_m
+    %         \end{align*} 
+
+    %     \end{proof}
+    % \end{lemma}
+    Consider the quantity
+    \begin{align*}
+        M^2=\max_{i}\sum_{j=1}^n (T_{ij})^2
+    \end{align*}
+    Then, as matrix multiplication is
+    \begin{align*}
+        T(h)&=\sum_j T_{ij}h_j\\
+        |T(h)|^2&=\sum_{i=1}^m\left((h_i)^2\sum_{j=1}^n(T_{ij})^2\right)\leq\sum_{i=1}^m(h_i)^2M^2=M^2|h|^2\\
+        |T(h)|&\leq M|h|
+    \end{align*}
+\end{document}

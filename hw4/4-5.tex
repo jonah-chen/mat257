@@ -1,0 +1,35 @@
+\documentclass{exam}
+\title{MAT257 PSET 4---Question 5}
+\author{Jonah Chen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+    \sffamily
+    \maketitle
+
+    Consider the function $g:\R\to\R$ where $g(t)=f(tx)=t^mf(x)$. Then, $g'(t)=mt^{m-1}f(x)$. 
+    
+    Consider the function $h:\R^n\times\R\to\R^n$ where $h(x,t)=tx$. Then, $g(t)=f(h(x,t))$. By chain rule, $$g'(t)=[f'(h(x,t))] [\partial_t h(x,t)]=Df(tx)\cdot x$$
+    $$g'(1)=Df(x)\cdot x=mt^{1-1}f(x)=mf(x)$$
+    As $f$ is differentiable, $$Df(x)=\begin{pmatrix}
+        D_1f(1) & D_2f(1) & \dots & D_nf(1)
+    \end{pmatrix}$$ 
+    Thus, $$g'(1)=Df(x)\cdot x=\sum_{i=1}^nx_iD_if(x)=mf(x)$$
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{exam}
+\title{MAT257 PSET 14---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\numberwithin{equation}{section}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Let \(f:\R^n\to\R\) be a differentiable function and \(\{(e_1)_p,\dots,(e_n)_p\}\) be an orthonormal basis for \(T_p\R^n\). As \(v_p\in T_p\R^n,\) it can be written as a superposition of its basis \(v_p=\sum v_i(e_i)_p.\)
+
+    Since the directional derivative is linear in the direction vector,
+    \[D_{v_p}f=\sum_{i=1}^n v_iD_{(e_i)_p}f=\sum_{i=1}^nv_i D_if(p).\]
+
+    Using the definition for the gradient,
+    \[(\mathrm{grad} f)(p)=\sum_{i=1}^nD_if(p)(e_i)_p\]
+    and the bilinearity of the inner product,
+    \begin{align*}
+        \langle(\mathrm{grad} f)(p),v_p\rangle&=\left\langle\sum_{i=1}^nD_if(p)(e_i)_p, \sum_{j=1}^nv_j(e_j)_p\right\rangle\\
+        &=\sum_{i=1}^n\sum_{j=1}^nD_if(p)v_j\langle(e_i)_p,(e_j)_p\rangle\\
+        &=\sum_{i=1}^n\sum_{j=1}^nD_if(p)v_j\delta_{ij}\\
+        &=\sum_{i=1}^nD_if(p)v_i=D_{v_p}f
+    \end{align*}
+
+    The directional derivative is defined as \(D_{v_p}f=\lim_{t\to 0}\frac{f(p+tv)-f(p)}{t}\). This is the rate of increase of the value of \(f\) in the direction of \(v_p\). By the cauchy-schwarz inequality, \[|D_{v_p}f|^2=|\langle(\mathrm{grad} f)(p),v_p\rangle|^2\leq\langle(\mathrm{grad} f)(p),(\mathrm{grad} f)(p)\rangle\langle v_p,v_p\rangle\]
+    with equality if \(v_p\) and \((\mathrm{grad} f)(p)\) are linearly dependent (i.e. same direction). Hence, the \((\mathrm{grad} f)(p)\) is the direction \(f\) is changing fastest at \(p\).
+\end{document}
