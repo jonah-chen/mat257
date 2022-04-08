@@ -1,0 +1,36 @@
+\documentclass{exam}
+\title{MAT257 PSET 18---Question 4}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    Given a $k+l+1$ manifold $M$, a $k$-form $\omega$ on $M$ and a $l$-form $\eta$ on $M$. Consider integrating the $k+l$-form $\omega\wedge\eta$. Since $M$ is compact and oriented, Stokes theorem holds. Furthermore, $M$ has no boundary so the integral over $\partial M$ is 0.
+    \begin{align*}
+    0=\int_{\partial M}\omega\wedge\eta=\int_{M}\dd(\omega\wedge\eta)=\int_M(\dd\omega\wedge\eta+(-1)^k\omega\wedge\dd\eta)
+    \end{align*}
+    Since integration is linear,
+    \begin{align*}
+    \int_M\dd\omega\wedge\eta=(-1)^{k+1}\int_M\omega\wedge\dd\eta.
+    \end{align*}
+    The sign for integration by parts is $s=(-1)^{k+1}$.
+\end{document}

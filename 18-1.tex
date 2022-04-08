@@ -1,0 +1,63 @@
+\documentclass{exam}
+\title{MAT257 PSET 18---Question 1}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+    \begin{enumerate}[label=\alph*)]
+        \item Consider the 1-manifold-with-boundary $M=\R_+$ with the usual orientation and an atlas with one coordinate chart (the identity map from $\R_+\to\R_+$), and the $0$-form $\omega=x$, then $\dd\omega=\dd x$. We know $\partial M=-(0),$ so
+        \begin{equation}
+            \int_{\partial M}\omega=\int_{-(0)}x=0
+        \end{equation}
+        However, the other side
+        \begin{equation}
+            \int_M\dd\omega=\int_M\dd x=\int_{\R^+}1
+        \end{equation}
+        This integral does not exist, hence it is not equal to 1 and Stokes' theorem does not hold for non-compact manifolds. (which is well known as it's a single variable integral, but this can also be shown by using a partition of unity and showing the series does not converge)
+        \begin{proposition}
+            Let $\omega$ be a $k$-form supported on a compact set $A\subset M$. Then,
+            \begin{equation}
+                \int_{M}\omega=\int_A\omega
+            \end{equation}
+            \begin{proof}
+                Consider
+            \end{proof}
+        \end{proposition}
+        Then, if $\omega$ has compact support, $\dd\omega$ has the same support. Then,
+        \begin{equation}
+            \int_M\dd\omega=\int_{\mathrm{supp}(\omega)}\dd\omega=\int_{\partial\mathrm{supp}(\omega)}\omega
+        \end{equation} 
+
+        \item Given an exact $k$-form $\omega$ on a $k$-manifold-without-boundary $M$, by definition, $\omega=\dd\eta$ for some $k-1$-form $\eta$. If $M$ is compact and oriented, Stokes' theorem holds.
+        \begin{equation}
+            \int_M\omega=\int_M\dd\eta=\int_{\partial M}\eta=\int_{\emptyset}\eta=0
+        \end{equation}
+
+        If $M$ is not compact however, consider $M=\R$, and a closed form $\omega=\frac{e^{-x^2/2}}{\sqrt{2\pi}}\dd x=\dd\eta$ where $\eta=\frac{1}{2}\erf(x/\sqrt2)$.
+
+        However, the integral
+        \begin{equation}
+            \int_M\omega=1
+        \end{equation}
+    \end{enumerate}
+\end{document}

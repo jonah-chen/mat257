@@ -1,0 +1,33 @@
+\documentclass{exam}
+\title{MAT257 PSET 18---Question 3}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\sffamily
+\maketitle
+\begin{enumerate}[label=\alph*)]
+    \item Consider $M=D^3_d\setminus\mathrm{int}\,D^3_c$. This is a compact manifold with boundary, with boundary $\partial M=S^2_d-S^2_c$, since $S^2_c$ has the opposite orientation. The integral \begin{equation*}
+        \int_{M}\dd\omega=\int_{\partial M}\omega=\int_{S^2_d}\omega-\int_{S^2_c}\omega=(a+b/d)-(a+b/c)=b/d-b/c.
+    \end{equation*}
+    \item If $\omega$ is closed, $\dd\omega=0$. As $\omega$ is a $2$-form on $\R^3\setminus\{0\}$, we can use the result from part a, with $\int_M\dd\omega=0$ since $\omega$ is closed. Then we have $b/d=b/c$ for any $d>c>0$ hence $b=0$.
+\end{enumerate}
+\end{document}

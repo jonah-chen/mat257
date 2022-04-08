@@ -1,0 +1,110 @@
+\documentclass{exam}
+\title{MAT257 PSET 15---Question 5}
+\author{Jonah Chen}
+\date{}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{braket}
+\usepackage{physoly}
+\usepackage{currfile}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{bbm}
+\setlength{\parindent}{0em}
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.16}
+\everymath{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+    \sffamily
+    \maketitle
+
+    \begin{enumerate}[label=\alph*)]
+        \item The definition of the exterior derivative is that \(\dd\omega=:\sum_{i=1}^n\dd x_i\wedge\partialderivative{\omega}{x_i}.\)
+
+        For the given \(\omega,\)
+        \begin{align*}
+            \dd\omega=\sum_{j=1}^n\sum_{i=1}^n(-1)^{i-1}\partial_j\left(\frac{x_i}{|x|^p}\right)\dd x_j\wedge\dd x_1\wedge\dots\hat{\dd x_i}\wedge\dots\dd x_n
+        \end{align*}
+        We notice that unless \(i=j\), the term is zero as there would be two copies of \(\dd x_i\) in the alternating wedge product. So we have
+        \begin{align*}
+            \dd\omega=\sum_{i=1}^n(-1)^{i-1}\partial_i\left(\frac{x_i}{|x|^p}\right)\dd x_i\wedge\dd x_1\wedge\dots\hat{\dd x_i}\wedge\dots\dd x_n
+        \end{align*}
+        It would take \(i-1\) swaps to move the first term to the correct place for the sequence to be ascending, which introduces a factor of \((-1)^{i-1}\).
+        \begin{align*}
+            \dd\omega=\dd x_1\wedge\dots\wedge\dd x_n\sum_{i=1}^n\partial_i\left(\frac{x_i}{|x|^p}\right)
+        \end{align*}
+        The partial derivative can be computed with quotient rule to be \(\frac{1-px_i^2/|x|^2}{|x|^p},\) thus,
+        \begin{align*}
+            \dd\omega&=\frac{1}{|x|^p}\dd x_1\wedge\dots\wedge\dd x_n\sum_{i=1}^n\left(1-\frac{px_i^2}{|x|^2}\right)\\
+            &=\frac{1}{|x|^p}\dd x_1\wedge\dots\wedge\dd x_n\left(n-\frac{p(x_1^2+\dots+x_n^2)}{|x|^2}\right)\\
+            &=\frac{n-p}{|x|^p}\dd x_1\wedge\dots\wedge\dd x_n
+        \end{align*}
+        \item For \(p=n, \dd\omega=0.\)
+    \end{enumerate}
+
+    \begin{proposition}
+        Consider an oriented $k$-manifold-with-boundary and a form $\omega\in\Omega^k(M)$ supported on $c_1(I^k)\cap c_2(I^k)$
+        \begin{equation}
+            \int_{c_1}\omega=\int_{c_2}\omega=:\int_M\omega
+        \end{equation}
+    \end{proposition}
+    Suppose $\omega\in\Omega^k(M),$ choose a partition of unity $\{\phi_i\}$ subordinate to the cover of $M$ by open sets that can be covered by ``good cubes''.
+    Define \begin{equation}
+        \int_M\omega=\sum_i\int_M\phi_i\omega
+    \end{equation}
+    Comments
+    \begin{enumerate}
+        \item If $M$ is compact, this always makes sense.
+        \item In general, first define ``integrable'' forms as $\sum_i\int_M\phi_i|\omega|<\infty$. Note that $c^*(\phi_i\omega)=f\dd x_1\wedge\dots\wedge\dd x_k\in\Omega^k(I^k)$
+    \end{enumerate}
+    Important: This is independent of the partition of unity.
+    \begin{equation}
+        \int_M^{(\varphi_i)}=\sum_i\int\phi_i\omega=\sum_{i,j}\int\psi_j\phi_i\omega=\sum_j\int\psi_j\omega=\int_M^{(\psi_j)}\omega
+    \end{equation}
+    Notes
+    \begin{enumerate}
+        \item $\int_M\omega$ is linear in $\omega$.
+        \item $\int_{-M}\omega=-\int_M\omega$, where $-M$ is the $M$ with the reversed orientation. (when you pull back with the cubes, let $c_1(x_1,\dots,x_k)=c_0(1-x_1,x_2,\dots,x_k))$ hence the transition function is $\phi(x_1,\dots,x_k)=(1-x_1,x_2,\dots,x_k)$. In the change of variables formula, the determinent of $\phi$ is $-1$.
+    \end{enumerate}
+    
+    \begin{theorem}[Stokes' Theorem]
+        If $M$ is a compacted and oriented $k$-manifold-with-boundary and $\omega\in\Omega^{k-1}(M)$, then 
+        \begin{equation}
+            \int_M\dd\omega=\int_{\partial M}\omega
+        \end{equation}
+        \begin{proof}
+            Suppose we know the theorem on forms $\omega$ with $\mathrm{supp}\omega\subset\mathrm{im} c_i$ for a single cube $c_i$. Start with
+            \begin{equation}
+                \int_{\partial M}\omega
+            \end{equation}
+            Take an appropriate partition of unity for $M$, it is also a partition of unity for $\partial M$. Then,
+            \begin{equation}
+                \int_{\partial M}\omega=\sum_i\int_{\partial M}\varphi_i\omega=\sum_i\int_M\sum_i\int_M\dd(\phi_i\omega)=\sum_i\int_M\dd(\varphi_i)\wedge\omega+\int_{M}\varphi_i\dd\omega=\int_{M}\dd(\sum_i\varphi_i)\omega+\int_{\varphi_i}\dd\omega=\int_{M}\varphi_i\dd\omega
+            \end{equation}
+            To prove the theorem for small sets, consider two cases: 
+            
+            Case $I$ (interior): $\mathrm{supp}\omega\subset\mathrm{int}M$ and can be covered by a single interior cube. Here,
+            \begin{equation}
+                \int_{\partial M}\omega =0 \text{ as } \omega|_{\partial M}=0
+            \end{equation}
+            \begin{equation}
+                \int_M\dd\omega=\int_{c_i}\dd\omega=\int_{I^k}c_i^*(\dd\omega)=\int_{I^k}\dd(c_i^*\omega)=\int_{\partial I^k}c_i^*\omega=\int_{c_{i*}(\partial I^k)}\omega=\int 0=0
+            \end{equation}
+            Case $B$ (boundary): $\mathrm{supp}\omega\cap\partial M\neq 0$\dots
+
+            Choose $c_b(0,y,\dots,y_{k-1})$ intersects $\partial M$,
+            \begin{equation}
+                \int_M\dd\omega=\int_{\partial I^k}c_b^*\omega=\int_{\partial c_b}\omega=-\int_{(c_b)(1,0)}=-\int_{y_1\dots y_{k-1}}c_b(1,0)^*\omega=\int_{\partial M}\omega
+            \end{equation}
+
+        \end{proof}
+    \end{theorem}
+
+\end{document}
